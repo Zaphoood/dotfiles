@@ -394,7 +394,11 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+
+    -- My own client keybindings
+    -- Close windows with Alt + F4
+    awful.key({ "Mod1" }, "F4", function (c) c:kill() end)
 )
 
 -- Bind all key numbers to tags.
