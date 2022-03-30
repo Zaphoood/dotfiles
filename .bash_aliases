@@ -35,4 +35,4 @@ alias matrix="cmatrix -s"
 
 # Alias for managing dotfiles in a git repository
 # that has its working tree set to $HOME
-alias dot-cfg='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
+alias dot-cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
