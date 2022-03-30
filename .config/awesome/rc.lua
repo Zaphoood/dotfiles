@@ -36,6 +36,9 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- Volume control
+require("volume")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -123,8 +126,9 @@ myawesomemenu = {
 }
 
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "open terminal", terminal }
+local menu_terminal = { "Terminal", terminal }
 
+-- TODO: Make this look better
 if has_fdo then
     mymainmenu = freedesktop.menu.build({
         before = { menu_awesome },
@@ -260,6 +264,8 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             -- Use kdbcfg's widget instead
             kbdcfg.widget,
+            -- Volume control widget
+            volume_widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
