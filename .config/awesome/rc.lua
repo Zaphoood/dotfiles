@@ -57,6 +57,9 @@ terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
+-- File explorer
+file_explorer = "nautilus"
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -273,8 +276,9 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+    -- Map this to close active client instead (see below)
+    -- awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    --           {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -352,8 +356,10 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
     -- My own keybindings
-    -- Super + L: Lock screen
-    awful.key({ modkey, "Control" }, 'l', function () awful.util.spawn("lock") end)
+    -- Modkey + Ctrl + L: Lock screen
+    awful.key({ modkey, "Control" }, 'l', function () awful.util.spawn("lock") end),
+    -- Modkey + E: File explorer (nautilus)
+    awful.key({ modkey }, 'e', function () awful.util.spawn(file_explorer) end)
 )
 
 clientkeys = gears.table.join(
@@ -400,8 +406,12 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"}),
 
     -- My own client keybindings
-    -- Close windows with Alt + F4
-    awful.key({ "Mod1" }, "F4", function (c) c:kill() end)
+    -- Alt + F4: Kill active client 
+    awful.key({ "Mod1" }, "F4", function (c) c:kill() end,
+              {description = "kill client", group = "mine"}),
+    -- Modkey + W: Kill active client
+    awful.key({ modkey }, "w", function (c) c:kill() end,
+              {description = "kill client", group = "mine"})
 )
 
 -- Bind all key numbers to tags.
