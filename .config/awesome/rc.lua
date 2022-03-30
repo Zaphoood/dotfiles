@@ -60,6 +60,14 @@ editor_cmd = terminal .. " -e " .. editor
 -- File explorer
 file_explorer = "nautilus"
 
+-- Keyboard layouts
+local keyboard_layout = require("keyboard_layout")
+local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
+kbdcfg.add_primary_layout("English", "us", "us")
+kbdcfg.add_primary_layout("Deutsch", "de", "de")
+kbdcfg.add_primary_layout("Español", "es", "es")
+kbdcfg.bind()
+
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
@@ -233,7 +241,9 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
+            -- Use kdbcfg's widget instead
+            kbdcfg.widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -320,7 +330,11 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    -- I use modkey + space for switching keyboard layouts,
+    -- so this binding has to change to modkey + control + space 
+    -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    --           {description = "select next", group = "layout"}),
+    awful.key({ modkey, "Control" }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
@@ -359,7 +373,10 @@ globalkeys = gears.table.join(
     -- Modkey + Ctrl + L: Lock screen
     awful.key({ modkey, "Control" }, 'l', function () awful.util.spawn("lock") end),
     -- Modkey + E: File explorer (nautilus)
-    awful.key({ modkey }, 'e', function () awful.util.spawn(file_explorer) end)
+    awful.key({ modkey }, 'e', function () awful.util.spawn(file_explorer) end),
+    -- Keyboard layouts
+    -- Shift-Alt to change keyboard layout
+    awful.key({ modkey }, "space", function () kbdcfg.switch_next() end)
 )
 
 clientkeys = gears.table.join(
@@ -604,5 +621,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Keybindings
---
