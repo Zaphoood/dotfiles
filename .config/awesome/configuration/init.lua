@@ -7,5 +7,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 
-require("configuration.keys")
+return {
+    keys = require("configuration.keys")
+}
 

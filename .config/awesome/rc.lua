@@ -36,6 +36,11 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- Load configuration
+local config = require("configuration")
+local kbdcfg = config.keys.kbdcfg
+root.keys(config.keys.globalkeys)
+
 -- Volume control
 require("volume")
 
@@ -78,13 +83,6 @@ editor_cmd = terminal .. " -e " .. editor
 -- File explorer
 file_explorer = "nautilus"
 
--- Keyboard layouts
-local keyboard_layout = require("keyboard_layout")
-local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
-kbdcfg.add_primary_layout("English", "us", "us")
-kbdcfg.add_primary_layout("Deutsch", "de", "de")
-kbdcfg.add_primary_layout("Español", "es", "es")
-kbdcfg.bind()
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -154,7 +152,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -285,9 +283,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
-                     -- keys and buttons are overwritten in configuration/keys.lua
-                     keys = clientkeys,
-                     buttons = clientbuttons,
+                     keys = config.keys.clientkeys,
+                     buttons = config.keys.clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
@@ -399,4 +396,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-require("configuration")
