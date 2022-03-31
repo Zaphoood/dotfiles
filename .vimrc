@@ -12,9 +12,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" add all your plugins here (note older versions of Vundle
+" add all your plugins here
 Plugin 'sbdchd/neoformat'
 Plugin 'catppuccin/nvim', {'name': 'catppuccin'}
+Plugin 'roxma/vim-tmux-clipboard'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
