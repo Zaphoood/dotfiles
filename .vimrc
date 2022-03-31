@@ -64,6 +64,9 @@ set nu
 " Enabler ruler
 set ruler
 
+" Disable search highlighting
+set nohlsearch
+
 " Scrolloff
 set scrolloff=1
 
@@ -108,6 +111,3 @@ set termguicolors
 
 " Set colorscheme
 colorscheme catppuccin
-
-" Set background color
-"set background=dark
