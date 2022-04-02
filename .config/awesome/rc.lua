@@ -6,6 +6,25 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
+-- Set up a key combination that executes a script which restarts awesome
+-- with a guaranteed working configuration. This is useful when things go really wrong.
+-- Note that this key combination will removed by a later root.keys() call
+local panic_mode_key = gears.table.join(
+-- globalkeys = gears.table.join(
+  awful.key({ "Mod4" , "Mod1" }, "p",
+      function ()
+          awful.util.spawn("/home/mathis/.config/awesome/restore-rc.sh")
+      end
+  )
+)
+root.keys(panic_mode_key)
+-- TODO: Test the actual case of something going horribly wrong by uncommenting the next linl
+-- and restarting awesome, to see if Super + Alt + p can bring back a usable config.
+-- WARNING: MAKE SURE THAT THERE IS ANOTHER WAY TO RESET THE rc.lua BEFORE YOU DO THIS!
+-- (e.g. ssh-ing into this machine)
+-- do return end
+
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
