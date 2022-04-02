@@ -108,7 +108,6 @@ local globalkeys = gears.table.join(
             {description = "select next", group = "layout"}),
   awful.key({ modkey, ctrl, shift   }, "space", function () awful.layout.inc(-1) end,
             {description = "select previous", group = "layout"}),
-
   awful.key({ modkey, ctrl }, "n",
             function ()
                 local c = awful.client.restore()
@@ -190,12 +189,12 @@ local globalkeys = gears.table.join(
           c:raise()
       end ,
       {description = "(un)maximize", group = "client"}),
-  awful.key({ modkey, ctrl }, "m",
-      function (c)
-          c.maximized_vertical = not c.maximized_vertical
-          c:raise()
-      end ,
-      {description = "(un)maximize vertically", group = "client"}),
+  -- awful.key({ modkey, ctrl }, "m",
+  --     function (c)
+  --         c.maximized_vertical = not c.maximized_vertical
+  --         c:raise()
+  --     end ,
+  --     {description = "(un)maximize vertically", group = "client"}),
   awful.key({ modkey, shift   }, "m",
       function (c)
           c.maximized_horizontal = not c.maximized_horizontal
