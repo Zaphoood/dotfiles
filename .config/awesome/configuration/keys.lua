@@ -142,8 +142,8 @@ local globalkeys = gears.table.join(
             {description = "show the menubar", group = "launcher"}),
 
   -- My own keybindings
-  -- Modkey + Ctrl + L: Lock screen
-  awful.key({ modkey, ctrl }, "l", function () awful.util.spawn("lock") end,
+  -- Modkey + Alt + L: Lock screen
+  awful.key({ modkey, alt }, "l", function () awful.util.spawn("lock") end,
             {description = "lock screen", group = "other"}),
   -- Modkey + E: File explorer (nautilus)
   awful.key({ modkey }, "e", function () awful.util.spawn(file_explorer) end,
