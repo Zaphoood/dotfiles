@@ -28,8 +28,7 @@ local naughty = require("naughty")
 
 -- My stuff --
 -- Configuration
-local config = require("configuration")
-root.keys(config.keys.globalkeys)
+require("configuration")
 -- Volume control
 require("volume")
 
