@@ -104,11 +104,9 @@ local globalkeys = gears.table.join(
             {description = "decrease the number of columns", group = "layout"}),
   -- I use modkey + space for switching keyboard layouts,
   -- so this binding has to change to modkey + control + space 
-  -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-  --           {description = "select next", group = "layout"}),
   awful.key({ modkey, ctrl }, "space", function () awful.layout.inc( 1) end,
             {description = "select next", group = "layout"}),
-  awful.key({ modkey, shift   }, "space", function () awful.layout.inc(-1) end,
+  awful.key({ modkey, ctrl, shift   }, "space", function () awful.layout.inc(-1) end,
             {description = "select previous", group = "layout"}),
 
   awful.key({ modkey, ctrl }, "n",
@@ -123,60 +121,60 @@ local globalkeys = gears.table.join(
             end,
             {description = "restore minimized", group = "client"}),
 
-  -- Prompt
-  awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-            {description = "run prompt", group = "launcher"}),
+      -- Prompt
+      awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+                {description = "run prompt", group = "launcher"}),
 
-  awful.key({ modkey }, "x",
-            function ()
-                awful.prompt.run {
-                  prompt       = "Run Lua code: ",
-                  textbox      = awful.screen.focused().mypromptbox.widget,
-                  exe_callback = awful.util.eval,
-                  history_path = awful.util.get_cache_dir() .. "/history_eval"
-                }
-            end,
-            {description = "lua execute prompt", group = "awesome"}),
-  -- Menubar
-  awful.key({ modkey }, "p", function() menubar.show() end,
-            {description = "show the menubar", group = "launcher"}),
+      awful.key({ modkey }, "x",
+                function ()
+                    awful.prompt.run {
+                      prompt       = "Run Lua code: ",
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = awful.util.eval,
+                      history_path = awful.util.get_cache_dir() .. "/history_eval"
+                    }
+                end,
+                {description = "lua execute prompt", group = "awesome"}),
+      -- Menubar
+      awful.key({ modkey }, "p", function() menubar.show() end,
+                {description = "show the menubar", group = "launcher"}),
 
-  -- My own keybindings
-  -- Modkey + Alt + L: Lock screen
-  awful.key({ modkey, alt }, "l", function () awful.util.spawn("lock") end,
-            {description = "lock screen", group = "other"}),
-  -- Modkey + E: File explorer (nautilus)
-  awful.key({ modkey }, "e", function () awful.util.spawn(file_explorer) end,
-            {description = "open file explorer", group = "launcher"}),
-  -- Keyboard layouts
-  -- Shift-Alt to change keyboard layout
-  awful.key({ modkey }, "space", function () kbdcfg.switch_next() end,
-            {description = "cycle keyboard layout", group = "other"}),
-  -- Volume control
- awful.key({ }, "XF86AudioRaiseVolume", function ()
-     awful.util.spawn(volume_control .. " set Master 9%+") end),
- awful.key({ }, "XF86AudioLowerVolume", function ()
-     awful.util.spawn(volume_control .. " set Master 9%-") end),
- awful.key({ }, "XF86AudioMute", function ()
-     awful.util.spawn(volume_control .. " set Master toggle") end)
-)
+      -- My own keybindings
+      -- Modkey + Alt + L: Lock screen
+      awful.key({ modkey, alt }, "l", function () awful.util.spawn("lock") end,
+                {description = "lock screen", group = "other"}),
+      -- Modkey + E: File explorer (nautilus)
+      awful.key({ modkey }, "e", function () awful.util.spawn(file_explorer) end,
+                {description = "open file explorer", group = "launcher"}),
+      -- Keyboard layouts
+      -- Shift-Alt to change keyboard layout
+      awful.key({ modkey }, "space", function () kbdcfg.switch_next() end,
+                {description = "cycle keyboard layout", group = "other"}),
+      -- Volume control
+     awful.key({ }, "XF86AudioRaiseVolume", function ()
+         awful.util.spawn(volume_control .. " set Master 9%+") end),
+     awful.key({ }, "XF86AudioLowerVolume", function ()
+         awful.util.spawn(volume_control .. " set Master 9%-") end),
+     awful.key({ }, "XF86AudioMute", function ()
+         awful.util.spawn(volume_control .. " set Master toggle") end)
+    )
 
 
-local clientkeys = gears.table.join(
-  awful.key({ modkey,           }, "f",
-      function (c)
-          c.fullscreen = not c.fullscreen
-          c:raise()
-      end,
-      {description = "toggle fullscreen", group = "client"}),
-  awful.key({ modkey, shift   }, "c",      function (c) c:kill()                         end,
-            {description = "close", group = "client"}),
-  awful.key({ modkey, ctrl }, "space",  awful.client.floating.toggle                     ,
-            {description = "toggle floating", group = "client"}),
+    local clientkeys = gears.table.join(
+      awful.key({ modkey,           }, "f",
+          function (c)
+              c.fullscreen = not c.fullscreen
+              c:raise()
+          end,
+          {description = "toggle fullscreen", group = "client"}),
+      awful.key({ modkey, shift   }, "c",      function (c) c:kill()                         end,
+                {description = "close", group = "client"}),
+      -- awful.key({ modkey, ctrl }, "space",  awful.client.floating.toggle                     ,
+      --       {description = "toggle floating", group = "client"}),
   awful.key({ modkey, ctrl }, "Return", function (c) c:swap(awful.client.getmaster()) end,
             {description = "move to master", group = "client"}),
-  awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-            {description = "move to screen", group = "client"}),
+  -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+  --           {description = "move to screen", group = "client"}),
   awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
             {description = "toggle keep on top", group = "client"}),
   awful.key({ modkey,           }, "n",
