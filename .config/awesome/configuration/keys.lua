@@ -14,9 +14,6 @@ local dpi = xresources.apply_dpi
 -- Notifications library
 local naughty = require("naughty")
 
--- Command for setting volume
-volume_control = "amixer -D pulse"
-
 -- Modkey is set to Super
 modkey = "Mod4"
 -- Aliases for other keys so they're easier to remember
@@ -151,9 +148,13 @@ local globalkeys = gears.table.join(
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
      awful.key({ }, "XF86AudioRaiseVolume", function ()
-         awful.util.spawn(volume_control .. " set Master 9%+") end),
+         awful.util.spawn(volume_control .. " set Master 9%+")
+         awful.util.spawn(volume_control .. " set Master unmute")
+     end),
      awful.key({ }, "XF86AudioLowerVolume", function ()
-         awful.util.spawn(volume_control .. " set Master 9%-") end),
+         awful.util.spawn(volume_control .. " set Master 9%-")
+         awful.util.spawn(volume_control .. " set Master unmute")
+     end),
      awful.key({ }, "XF86AudioMute", function ()
          awful.util.spawn(volume_control .. " set Master toggle") end)
     )

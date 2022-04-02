@@ -5,6 +5,9 @@ editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 -- }}}
 
+-- Command for setting volume
+volume_control = "amixer -D pulse"
+
 -- File explorer
 file_explorer = "nautilus"
 
