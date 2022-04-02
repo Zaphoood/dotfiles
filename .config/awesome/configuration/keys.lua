@@ -148,11 +148,11 @@ local globalkeys = gears.table.join(
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
      awful.key({ }, "XF86AudioRaiseVolume", function ()
-         awful.util.spawn(volume_control .. " set Master 9%+")
+         awful.util.spawn(volume_control .. " set Master " .. volume_change .. "%+")
          awful.util.spawn(volume_control .. " set Master unmute")
      end),
      awful.key({ }, "XF86AudioLowerVolume", function ()
-         awful.util.spawn(volume_control .. " set Master 9%-")
+         awful.util.spawn(volume_control .. " set Master " .. volume_change .. "%-")
          awful.util.spawn(volume_control .. " set Master unmute")
      end),
      awful.key({ }, "XF86AudioMute", function ()
