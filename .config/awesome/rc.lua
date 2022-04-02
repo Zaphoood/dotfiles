@@ -7,6 +7,7 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 
+-- {{{ Panic
 -- Set up a key combination that executes a script which restarts awesome
 -- with a guaranteed working configuration. This is useful when things go really wrong.
 local panic_mode_key = gears.table.join(
@@ -19,18 +20,9 @@ local panic_mode_key = gears.table.join(
 )
 -- Note that the above key combination will removed by a later root.keys() call
 root.keys(panic_mode_key)
+-- }}}
 
 
--- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
-
--- File explorer
-file_explorer = "nautilus"
-
--- Theme handling library
-local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 

@@ -28,12 +28,13 @@ local keys = require("configuration.keys")
 local kbdcfg = keys.kbdcfg
 
 
--- {{{ Variable definitions
+-- {{{ Theme
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init("/home/mathis/.config/awesome/themes/main/theme.lua")
+-- }}}
 
-
+-- {{{ Layouts
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.floating,
