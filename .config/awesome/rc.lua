@@ -34,10 +34,10 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 
--- Load configuration
+-- My stuff --
+-- Configuration
 local config = require("configuration")
 root.keys(config.keys.globalkeys)
-
 -- Volume control
 require("volume")
 
@@ -65,6 +65,4 @@ do
     end)
 end
 -- }}}
-
-require("configuration.ui")
 

@@ -8,6 +8,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 return {
-    keys = require("configuration.keys")
+    keys = require("configuration.keys"),
+    ui = require("configuration.ui")
 }
 
