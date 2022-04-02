@@ -20,25 +20,13 @@ local panic_mode_key = gears.table.join(
 -- Note that the above key combination will removed by a later root.keys() call
 root.keys(panic_mode_key)
 
--- Widget and layout library
-local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
-
--- Load Debian menu entries
-local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- Load configuration
 local config = require("configuration")
-local kbdcfg = config.keys.kbdcfg
 root.keys(config.keys.globalkeys)
 
 -- Volume control

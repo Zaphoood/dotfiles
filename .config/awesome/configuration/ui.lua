@@ -11,12 +11,19 @@ local beautiful = require("beautiful")
 
 -- Notifications library
 local naughty = require("naughty")
---
+-- local hotkeys_popup = require("awful.hotkeys_popup")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+-- require("awful.hotkeys_popup.keys")
+
+-- Load Debian menu entries
+local debian = require("debian.menu")
+local has_fdo, freedesktop = pcall(require, "freedesktop")
+
 -- Menubar
 local menubar = require("menubar")
 
 -- Keyboard layout
-local config = require("configuration")
 local keys = require("configuration.keys")
 local kbdcfg = keys.kbdcfg
 
@@ -188,8 +195,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
-                     keys = config.keys.clientkeys,
-                     buttons = config.keys.clientbuttons,
+                     keys = keys.clientkeys,
+                     buttons = keys.clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
