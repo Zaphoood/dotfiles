@@ -27,6 +27,8 @@ local menubar = require("menubar")
 local keys = require("configuration.keys")
 local kbdcfg = keys.kbdcfg
 
+-- Volume control
+local volume = require("volume")
 
 -- {{{ Theme
 -- Themes define colours, icons, font and wallpapers.
@@ -206,7 +208,7 @@ awful.screen.connect_for_each_screen(function(s)
             -- Use kdbcfg's widget instead
             kbdcfg.widget,
             -- Volume control widget
-            volume_widget,
+            volume.widget,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
