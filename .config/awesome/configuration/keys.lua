@@ -4,11 +4,6 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Theme handling library
-local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-
 -- Notifications library
 local naughty = require("naughty")
 
@@ -214,10 +209,7 @@ keys.clientkeys = gears.table.join(
 
     -- My own client keybindings
     -- Alt + F4: Kill active client 
-    awful.key({ alt }, "F4", function (c)
-                naughty.notify({ text = "kill" })
-                c:kill()
-            end,
+    awful.key({ alt }, "F4", function (c) c:kill() end,
             {description = "kill client", group = "client"}),
     -- Modkey + W: Kill active client
     awful.key({ modkey }, "w", function (c) c:kill() end,

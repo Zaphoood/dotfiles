@@ -2,7 +2,6 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Keyboard layout
 local keys = require("configuration.keys")
@@ -14,8 +13,8 @@ local volume = require("volume")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
+-- local xresources = require("beautiful.xresources")
+-- local dpi = xresources.apply_dpi
 
 -- Menubar
 -- What does menubar even do??
