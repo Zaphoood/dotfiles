@@ -19,8 +19,5 @@ file_explorer = "nautilus"
 configuration.keys = require("configuration.keys")
 root.keys(configuration.keys.globalkeys)
 
--- User interface
-configuration.ui = require("configuration.ui")
-
 return configuration
 

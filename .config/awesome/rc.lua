@@ -28,6 +28,7 @@ local naughty = require("naughty")
 -- My stuff --
 -- Configuration
 local config = require("configuration")
+local ui = require("ui")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
