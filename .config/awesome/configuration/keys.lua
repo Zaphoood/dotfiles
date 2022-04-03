@@ -6,14 +6,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Theme handling library
 local beautiful = require("beautiful")
-
--- Theme library
-local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 -- Notifications library
 local naughty = require("naughty")
+
+-- Helpers (e. g. for volume change)
+local helpers = require("helpers")
 
 -- Modkey is set to Super
 modkey = "Mod4"
@@ -149,15 +149,14 @@ keys.globalkeys = gears.table.join(
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
      awful.key({ }, "XF86AudioRaiseVolume", function ()
-         awful.util.spawn(volume_control .. " set Master " .. volume_change .. "%+")
-         awful.util.spawn(volume_control .. " set Master unmute")
+         helpers.change_volume(volume_change)
      end),
      awful.key({ }, "XF86AudioLowerVolume", function ()
-         awful.util.spawn(volume_control .. " set Master " .. volume_change .. "%-")
-         awful.util.spawn(volume_control .. " set Master unmute")
+         helpers.change_volume(-volume_change)
      end),
      awful.key({ }, "XF86AudioMute", function ()
-         awful.util.spawn(volume_control .. " set Master toggle") end)
+         helpers.toggle_mute()
+     end)
     )
 
 

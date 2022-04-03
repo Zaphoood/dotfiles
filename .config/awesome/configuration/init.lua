@@ -10,7 +10,7 @@ editor_cmd = terminal .. " -e " .. editor
 volume_control = "amixer -D pulse"
 -- Amount in percent by which the audio volume is changed
 -- when a volume +/- key is pressed
-volume_change = "5"
+volume_change = 5
 
 -- File explorer
 file_explorer = "nautilus"
