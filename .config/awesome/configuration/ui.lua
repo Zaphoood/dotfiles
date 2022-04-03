@@ -57,6 +57,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+local default_layout = 4
 -- }}}
 
 
@@ -163,8 +164,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-    awful.tag({ "main", "work", "other" }, s, awful.layout.layouts[1])
+    awful.tag({ "main", "work", "other" }, s, awful.layout.layouts[default_layout])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
