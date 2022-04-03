@@ -11,6 +11,9 @@ volume_control = "amixer -D pulse"
 -- Amount in percent by which the audio volume is changed
 -- when a volume +/- key is pressed
 volume_change = 5
+-- Command used to control Spotify playback
+-- Must be concatenated with either `Play`, `Pause`, `PlayPause`, `Next` or `Previous`
+spotify_control = "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
 
 -- File explorer
 file_explorer = "nautilus"

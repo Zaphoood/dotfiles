@@ -13,15 +13,15 @@ function helpers.toggle_mute(x)
 end
 
 function helpers.spotify_play_pause(x)
-    awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    awful.util.spawn(spotify_control .. "PlayPause")
 end
 
 function helpers.spotify_next(x)
-    awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+    awful.util.spawn(spotify_control .. "Next")
 end
 
 function helpers.spotify_previous(x)
-    awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    awful.util.spawn(spotify_control .. "Previous")
 end
 
 return helpers
