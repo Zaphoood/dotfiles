@@ -16,3 +16,4 @@ I'm using [this](https://github.com/echuraev/keyboard_layout) keyboard layout wi
 Other dependencies:
  * [dbus-send](https://linux.die.net/man/1/dbus-send)
  * [amixer](https://linux.die.net/man/1/amixer)
+ * [ranger](https://github.com/ranger/ranger) together with [Überzug](https://github.com/seebye/ueberzug)
