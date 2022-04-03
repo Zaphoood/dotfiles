@@ -5,6 +5,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local beautiful = require("beautiful")
 require("awful.autofocus")
 
 -- {{{ Panic
@@ -21,6 +22,8 @@ local panic_mode_key = gears.table.join(
 root.keys(panic_mode_key)
 -- }}}
 
+-- Theme
+beautiful.init("/home/mathis/.config/awesome/themes/main/theme.lua")
 
 -- Notification library
 local naughty = require("naughty")

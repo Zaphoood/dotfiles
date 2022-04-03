@@ -6,7 +6,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Keyboard layout
 local keys = require("configuration.keys")
---
+
 -- Volume control
 local volume = require("volume")
 --
