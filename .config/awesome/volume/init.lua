@@ -12,13 +12,23 @@ function update_volume(widget)
     fd:close()
  
     local volume = string.match(status, "(%d?%d?%d)%%")
+    volume_str_len = #volume
     volume = string.format("% 3d", volume)
  
     status = string.match(status, "%[(o[^%]]*)%]")
 
+    -- Prepend spaces in order to assure constant with
+    -- naughty.notify({ text = tostring(#volume) })
+    if volume_str_len  < 1 then
+        volume = " " .. volume
+    end
+    if volume_str_len  < 2 then
+        volume = " " .. volume
+    end
     -- Append percentage sign
     volume = volume .. "%"
     -- Apply strikethrough if muted
+
     if not string.find(status, "on", 1, true) then
         volume = "<s>" .. volume .. "</s>"
     end
@@ -30,3 +40,5 @@ update_volume(volume_widget)
 mytimer = timer({ timeout = 0.2 })
 mytimer:connect_signal("timeout", function () update_volume(volume_widget) end)
 mytimer:start()
+
+return { widget = volume_widget }

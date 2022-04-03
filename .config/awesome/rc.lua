@@ -11,7 +11,6 @@ require("awful.autofocus")
 -- Set up a key combination that executes a script which restarts awesome
 -- with a guaranteed working configuration. This is useful when things go really wrong.
 local panic_mode_key = gears.table.join(
--- globalkeys = gears.table.join(
   awful.key({ "Mod4" , "Mod1" }, "p",
       function ()
           awful.util.spawn("/home/mathis/.config/awesome/restore-rc.sh")
@@ -28,9 +27,8 @@ local naughty = require("naughty")
 
 -- My stuff --
 -- Configuration
-require("configuration")
--- Volume control
-require("volume")
+local config = require("configuration")
+local ui = require("ui")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
