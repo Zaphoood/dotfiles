@@ -125,7 +125,7 @@ keys.globalkeys = gears.table.join(
       awful.key({ modkey }, "x",
                 function ()
                     awful.prompt.run {
-                      prompt       = "Run Lua code: ",
+                      prompt       = "Lua: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = awful.util.eval,
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -138,24 +138,33 @@ keys.globalkeys = gears.table.join(
 
       -- My own keybindings
       -- Modkey + Alt + L: Lock screen
-      awful.key({ modkey, alt }, "l", function () awful.util.spawn("lock") end,
+      awful.key({ modkey, alt }, "l", function() awful.util.spawn("lock") end,
                 {description = "lock screen", group = "other"}),
       -- Modkey + E: File explorer (nautilus)
-      awful.key({ modkey }, "e", function () awful.util.spawn(file_explorer) end,
+      awful.key({ modkey }, "e", function() awful.util.spawn(file_explorer) end,
                 {description = "open file explorer", group = "launcher"}),
       -- Keyboard layouts
       -- Shift-Alt to change keyboard layout
-      awful.key({ modkey }, "space", function () keys.kbdcfg.switch_next() end,
+      awful.key({ modkey }, "space", function() keys.kbdcfg.switch_next() end,
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
-     awful.key({ }, "XF86AudioRaiseVolume", function ()
+     awful.key({ }, "XF86AudioRaiseVolume", function()
          helpers.change_volume(volume_change)
      end),
-     awful.key({ }, "XF86AudioLowerVolume", function ()
+     awful.key({ }, "XF86AudioLowerVolume", function()
          helpers.change_volume(-volume_change)
      end),
-     awful.key({ }, "XF86AudioMute", function ()
+     awful.key({ }, "XF86AudioMute", function()
          helpers.toggle_mute()
+     end),
+     awful.key({ }, "XF86AudioPlay", function()
+         helpers.spotify_play_pause()
+     end),
+     awful.key({ }, "XF86AudioNext", function()
+         helpers.spotify_next()
+     end),
+     awful.key({ }, "XF86AudioPrev", function()
+         helpers.spotify_previous()
      end)
     )
 

@@ -12,8 +12,16 @@ function helpers.toggle_mute(x)
      awful.util.spawn(volume_control .. " set Master toggle")
 end
 
-function spotify_play_pause(x)
+function helpers.spotify_play_pause(x)
     awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+end
+
+function helpers.spotify_next(x)
+    awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+end
+
+function helpers.spotify_previous(x)
+    awful.util.spawn("dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
 end
 
 return helpers
