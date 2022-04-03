@@ -1,3 +1,4 @@
+local configuration = {}
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -15,14 +16,11 @@ volume_change = "5"
 file_explorer = "nautilus"
 
 -- Keyboard layout and shortcuts
-keys = require("configuration.keys")
-root.keys(keys.globalkeys)
+configuration.keys = require("configuration.keys")
+root.keys(configuration.keys.globalkeys)
 
 -- User interface
-ui = require("configuration.ui")
+configuration.ui = require("configuration.ui")
 
-return {
-    keys = keys,
-    ui = ui,
-}
+return configuration
 

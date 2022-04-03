@@ -1,3 +1,5 @@
+local ui = {}
+
 -- Standard awesome library
 local awful = require("awful")
 local gears = require("gears")
@@ -25,7 +27,6 @@ local menubar = require("menubar")
 
 -- Keyboard layout
 local keys = require("configuration.keys")
-local kbdcfg = keys.kbdcfg
 
 -- Volume control
 local volume = require("volume")
@@ -206,7 +207,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mykeyboardlayout,
             -- Use kdbcfg's widget instead
-            kbdcfg.widget,
+            keys.kbdcfg.widget,
             -- Volume control widget
             volume.widget,
             wibox.widget.systray(),
@@ -339,3 +340,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+return ui

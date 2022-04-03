@@ -1,3 +1,4 @@
+local keys = {}
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -23,14 +24,14 @@ shift = "Shift"
 --
 -- Keyboard layouts
 local keyboard_layout = require("keyboard_layout")
-local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
-kbdcfg.add_primary_layout("English", "us", "us")
-kbdcfg.add_primary_layout("Deutsch", "de", "de")
-kbdcfg.add_primary_layout("Español", "es", "es")
-kbdcfg.bind()
+keys.kbdcfg = keyboard_layout.kbdcfg({ type = "tui" })
+keys.kbdcfg.add_primary_layout("English", "us", "us")
+keys.kbdcfg.add_primary_layout("Deutsch", "de", "de")
+keys.kbdcfg.add_primary_layout("Español", "es", "es")
+keys.kbdcfg.bind()
 
 -- {{{ Key bindings
-local globalkeys = gears.table.join(
+keys.globalkeys = gears.table.join(
   awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
             {description="show help", group="awesome"}),
   awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -144,7 +145,7 @@ local globalkeys = gears.table.join(
                 {description = "open file explorer", group = "launcher"}),
       -- Keyboard layouts
       -- Shift-Alt to change keyboard layout
-      awful.key({ modkey }, "space", function () kbdcfg.switch_next() end,
+      awful.key({ modkey }, "space", function () keys.kbdcfg.switch_next() end,
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
      awful.key({ }, "XF86AudioRaiseVolume", function ()
@@ -216,7 +217,7 @@ local globalkeys = gears.table.join(
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
-  globalkeys = gears.table.join(globalkeys,
+  keys.globalkeys = gears.table.join(keys.globalkeys,
       -- View tag only.
       awful.key({ modkey }, "#" .. i + 9,
                 function ()
@@ -280,11 +281,4 @@ local clientbuttons = gears.table.join(
 )
 -- }}}
 
--- This is probably not the best way to export stuff
-return {
-    kbdcfg = kbdcfg,
-    globalkeys = globalkeys,
-    clientkeys = clientkeys,
-    clientbuttons = clientbuttons,
-}
-
+return keys
