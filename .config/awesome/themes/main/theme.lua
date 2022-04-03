@@ -12,36 +12,46 @@ local theme = {}
 
 theme.font = "JetBrainsMono Nerd Font 10"
 
-theme.useless_gap = 5
-theme.border_width = 1
+theme.useless_gap = 3
+theme.border_width = 2
 
-theme.black = "#1e1e28"
-theme.deep_black = "#1b1923"
-theme.white = "#d7dae0"
-theme.light_white = "#fafafa"
-theme.pink = "#f0afe1"
-theme.red = "#e28c8c"
-theme.orange = "#f9c096"
-theme.yellow = "#eadda0"
-theme.green = "#b3e1a3"
-theme.blue = "#a4b9ef"
-theme.purple = "#c6aae8"
-theme.grey = "#6e6c7c"
+-- Using the catppuccin color palette:
+-- https://github.com/catppuccin/catppuccin#-palette 
+theme.deep_black  = "#1a1826" -- Black 1
+theme.black       = "#302d41" -- Black 3
+theme.white       = "#c3bac6" -- Gray 2
+theme.light_white = "#d9e0ee" -- White
+theme.pink        = "#f5c2e7" -- Pink
+theme.red         = "#F28fad" -- Red
+theme.orange      = "#f8bd96" -- Peach
+theme.yellow      = "#fae3b0" -- Yellow
+theme.green       = "#abe9b3" -- Green
+theme.blue        = "#96cdfb" -- Blue
+-- theme.blue     = "#89dceb" -- Sky
+theme.purple      = "#ddb6f2" -- Mauve
+theme.grey        = "#6e6c7e" -- Gray 0
+-- theme.grey     = "#988ba2" -- Gray 1
+-- theme.grey     = "#c3bac6" -- Gray 2
 
-theme.bg_normal = theme.black
-theme.bg_focus = theme.deep_black
-theme.bg_urgent = theme.white
-theme.bg_minimize = theme.grey
-theme.bg_systray = theme.black
+-- I try to follow the 60-30-10 rule: https://www.youtube.com/watch?v=UWwNIMHFdW4
+local primary = theme.black
+local secondary = theme.grey
+local accent = theme.purple
 
-theme.fg_normal = theme.white
-theme.fg_focus = theme.orange
+theme.bg_normal = theme.deep_black
+theme.bg_focus = theme.black
+theme.bg_urgent = theme.grey
+theme.bg_minimize = theme.deep_black
+theme.bg_systray = theme.deep_black
+
+theme.fg_normal = theme.grey
+theme.fg_focus = theme.light_white
 theme.fg_urgent = theme.red
-theme.fg_minimize = theme.light_white
+theme.fg_minimize = theme.grey
 
-theme.border_normal = theme.blue
-theme.border_focus = theme.green
-theme.border_marked = theme.purple
+theme.border_normal = theme.black
+theme.border_focus = theme.grey
+theme.border_marked = theme.grey
 
 -- There are other variable sets
 -- overriding the default one when
@@ -78,7 +88,10 @@ theme.notification_icon_size = dpi(60)
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 theme.menu_height = dpi(15)
-theme.menu_width = dpi(100)
+theme.menu_width = dpi(150)
+
+-- Don't show symbols indicating maximized state etc. before a client's name
+theme.tasklist_plain_task_name = true
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -111,7 +124,7 @@ theme.titlebar_maximized_button_focus_inactive = themes_path .. "default/titleba
 theme.titlebar_maximized_button_normal_active = themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active = themes_path .. "default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/mathis/Pictures/omoide-no-marnie.jpg"
+theme.wallpaper = themes_path .. "main/wallpaper/omoide-no-marnie.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
