@@ -13,3 +13,5 @@ config checkout
 
 ### Dependencies
 I'm using [this](https://github.com/echuraev/keyboard_layout) keyboard layout widget instead of the one that comes with awesome. To install it, simply clone the repository into your `~/.config/awesome` directory.
+Other dependencies:
+ * [ranger](https://github.com/ranger/ranger) together with [Überzug](https://github.com/seebye/ueberzug)
