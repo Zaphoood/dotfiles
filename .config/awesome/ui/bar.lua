@@ -20,8 +20,8 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 -- menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 
 -- {{{ Menu
-
 local menu_terminal = { "Terminal", terminal }
+local menu_debian = { "Debian", debian.menu.Debian_menu.Debian }
 
 -- TODO: Make this look better
 if has_fdo then
@@ -31,9 +31,9 @@ if has_fdo then
 else
     mymainmenu = awful.menu({
         items = {
-                  { "Debian", debian.menu.Debian_menu.Debian },
-                  menu_terminal,
-                }
+            menu_debian,
+            menu_terminal,
+        }
     })
 end
 
@@ -102,12 +102,14 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+tags = { "main", "work", "other" }
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "main", "work", "other" }, s, awful.layout.layouts[default_layout])
+    awful.tag(tags, s, awful.layout.layouts[default_layout])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
