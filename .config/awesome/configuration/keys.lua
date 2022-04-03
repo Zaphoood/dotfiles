@@ -4,11 +4,6 @@ local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Theme handling library
-local beautiful = require("beautiful")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-
 -- Notifications library
 local naughty = require("naughty")
 
@@ -125,7 +120,7 @@ keys.globalkeys = gears.table.join(
       awful.key({ modkey }, "x",
                 function ()
                     awful.prompt.run {
-                      prompt       = "Run Lua code: ",
+                      prompt       = "Lua: ",
                       textbox      = awful.screen.focused().mypromptbox.widget,
                       exe_callback = awful.util.eval,
                       history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -138,77 +133,86 @@ keys.globalkeys = gears.table.join(
 
       -- My own keybindings
       -- Modkey + Alt + L: Lock screen
-      awful.key({ modkey, alt }, "l", function () awful.util.spawn("lock") end,
+      awful.key({ modkey, alt }, "l", function() awful.util.spawn("lock") end,
                 {description = "lock screen", group = "other"}),
       -- Modkey + E: File explorer (nautilus)
-      awful.key({ modkey }, "e", function () awful.util.spawn(file_explorer) end,
+      awful.key({ modkey }, "e", function() awful.util.spawn(file_explorer) end,
                 {description = "open file explorer", group = "launcher"}),
       -- Keyboard layouts
       -- Shift-Alt to change keyboard layout
-      awful.key({ modkey }, "space", function () keys.kbdcfg.switch_next() end,
+      awful.key({ modkey }, "space", function() keys.kbdcfg.switch_next() end,
                 {description = "cycle keyboard layout", group = "other"}),
       -- Volume control
-     awful.key({ }, "XF86AudioRaiseVolume", function ()
+     awful.key({ }, "XF86AudioRaiseVolume", function()
          helpers.change_volume(volume_change)
      end),
-     awful.key({ }, "XF86AudioLowerVolume", function ()
+     awful.key({ }, "XF86AudioLowerVolume", function()
          helpers.change_volume(-volume_change)
      end),
-     awful.key({ }, "XF86AudioMute", function ()
+     awful.key({ }, "XF86AudioMute", function()
          helpers.toggle_mute()
+     end),
+     awful.key({ }, "XF86AudioPlay", function()
+         helpers.spotify_play_pause()
+     end),
+     awful.key({ }, "XF86AudioNext", function()
+         helpers.spotify_next()
+     end),
+     awful.key({ }, "XF86AudioPrev", function()
+         helpers.spotify_previous()
      end)
     )
 
 
-    local clientkeys = gears.table.join(
-      awful.key({ modkey,           }, "f",
-          function (c)
-              c.fullscreen = not c.fullscreen
-              c:raise()
-          end,
-          {description = "toggle fullscreen", group = "client"}),
-      awful.key({ modkey, shift   }, "c",      function (c) c:kill()                         end,
-                {description = "close", group = "client"}),
-      -- awful.key({ modkey, ctrl }, "space",  awful.client.floating.toggle                     ,
-      --       {description = "toggle floating", group = "client"}),
-  awful.key({ modkey, ctrl }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+keys.clientkeys = gears.table.join(
+    awful.key({ modkey,           }, "f",
+      function (c)
+          c.fullscreen = not c.fullscreen
+          c:raise()
+      end,
+      {description = "toggle fullscreen", group = "client"}),
+    awful.key({ modkey, shift   }, "c",      function (c) c:kill()                         end,
+            {description = "close", group = "client"}),
+    -- awful.key({ modkey, ctrl }, "space",  awful.client.floating.toggle                     ,
+    --       {description = "toggle floating", group = "client"}),
+    awful.key({ modkey, ctrl }, "Return", function (c) c:swap(awful.client.getmaster()) end,
             {description = "move to master", group = "client"}),
-  -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-  --           {description = "move to screen", group = "client"}),
-  awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+    -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+    --           {description = "move to screen", group = "client"}),
+    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
             {description = "toggle keep on top", group = "client"}),
-  awful.key({ modkey,           }, "n",
+    awful.key({ modkey,           }, "n",
       function (c)
           -- The client currently has the input focus, so it cannot be
           -- minimized, since minimized clients can't have the focus.
           c.minimized = true
       end ,
       {description = "minimize", group = "client"}),
-  awful.key({ modkey,           }, "m",
+    awful.key({ modkey,           }, "m",
       function (c)
           c.maximized = not c.maximized
           c:raise()
       end ,
       {description = "(un)maximize", group = "client"}),
-  -- awful.key({ modkey, ctrl }, "m",
-  --     function (c)
-  --         c.maximized_vertical = not c.maximized_vertical
-  --         c:raise()
-  --     end ,
-  --     {description = "(un)maximize vertically", group = "client"}),
-  awful.key({ modkey, shift   }, "m",
+    -- awful.key({ modkey, ctrl }, "m",
+    --     function (c)
+    --         c.maximized_vertical = not c.maximized_vertical
+    --         c:raise()
+    --     end ,
+    --     {description = "(un)maximize vertically", group = "client"}),
+    awful.key({ modkey, shift   }, "m",
       function (c)
           c.maximized_horizontal = not c.maximized_horizontal
           c:raise()
       end ,
       {description = "(un)maximize horizontally", group = "client"}),
 
-  -- My own client keybindings
-  -- Alt + F4: Kill active client 
-  awful.key({ alt }, "F4", function (c) c:kill() end,
+    -- My own client keybindings
+    -- Alt + F4: Kill active client 
+    awful.key({ alt }, "F4", function (c) c:kill() end,
             {description = "kill client", group = "client"}),
-  -- Modkey + W: Kill active client
-  awful.key({ modkey }, "w", function (c) c:kill() end,
+    -- Modkey + W: Kill active client
+    awful.key({ modkey }, "w", function (c) c:kill() end,
             {description = "kill client", group = "client"})
 )
 
@@ -265,7 +269,7 @@ end
 -- }}}
 
 -- {{{ Mouse bindings
-local clientbuttons = gears.table.join(
+keys.clientbuttons = gears.table.join(
   awful.button({ }, 1, function (c)
       c:emit_signal("request::activate", "mouse_click", {raise = true})
   end),

@@ -2,11 +2,10 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Keyboard layout
 local keys = require("configuration.keys")
---
+
 -- Volume control
 local volume = require("volume")
 --
@@ -14,37 +13,29 @@ local volume = require("volume")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- local xresources = require("beautiful.xresources")
+-- local dpi = xresources.apply_dpi
+
 -- Menubar
 -- What does menubar even do??
 -- local menubar = require("menubar")
 -- menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 
 -- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
-
-local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "Terminal", terminal }
+local menu_debian = { "Debian", debian.menu.Debian_menu.Debian }
 
 -- TODO: Make this look better
 if has_fdo then
     mymainmenu = freedesktop.menu.build({
-        before = { menu_awesome },
         after =  { menu_terminal }
     })
 else
     mymainmenu = awful.menu({
         items = {
-                  menu_awesome,
-                  { "Debian", debian.menu.Debian_menu.Debian },
-                  menu_terminal,
-                }
+            menu_debian,
+            menu_terminal,
+        }
     })
 end
 
@@ -59,44 +50,25 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
-
 local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+    awful.button({ }, 1, function (c)
+        if c == client.focus then
+            c.minimized = true
+        else
+            c:emit_signal(
+                "request::activate",
+                "tasklist",
+                {raise = true}
+            )
+        end
+    end)
+    --[[
+    awful.button({ }, 3, function()
+        awful.menu.client_list({ theme = { width = 250 } })
+    end)
+    --]]
+)
+
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -113,12 +85,14 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+tags = { "main", "work", "other" }
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "main", "work", "other" }, s, awful.layout.layouts[default_layout])
+    awful.tag(tags, s, awful.layout.layouts[default_layout])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -158,15 +132,15 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
             -- mykeyboardlayout,
             -- Use kdbcfg's widget instead
             keys.kbdcfg.widget,
             -- Volume control widget
             volume.widget,
-            wibox.widget.systray(),
+            -- wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
+            layout = wibox.layout.fixed.horizontal,
         },
     }
 end)

@@ -1,12 +1,6 @@
 local ui = {}
 
 local awful = require("awful")
-local beautiful = require("beautiful")
-
--- {{{ Theme
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/mathis/.config/awesome/themes/main/theme.lua")
--- }}}
 
 -- {{{ Layouts
 -- Table of layouts to cover with awful.layout.inc, order matters.
