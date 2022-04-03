@@ -12,7 +12,8 @@ config checkout
 ```
 
 ### Dependencies
-I'm using [this](https://github.com/echuraev/keyboard_layout) keyboard layout widget instead of the one that comes with awesome. To install it, simply clone the repository into your `~/.config/awesome` directory.
+I'm using [this](https://github.com/echuraev/keyboard_layout) keyboard layout widget instead of the one that comes with awesome. To install it, clone the repository into your `~/.config/awesome` directory.
+
 Other dependencies:
  * [dbus-send](https://linux.die.net/man/1/dbus-send)
  * [amixer](https://linux.die.net/man/1/amixer)
