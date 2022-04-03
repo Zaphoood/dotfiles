@@ -6,6 +6,9 @@ local wibox = require("wibox")
 -- Keyboard layout
 local keys = require("configuration.keys")
 
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -94,7 +97,11 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
+            {
+                awful.titlebar.widget.iconwidget(c),
+                margins = dpi(3),
+                layout = wibox.container.margin
+            },
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
@@ -111,7 +118,11 @@ client.connect_signal("request::titlebars", function(c)
             -- awful.titlebar.widget.maximizedbutton(c),
             -- awful.titlebar.widget.stickybutton(c),
             -- awful.titlebar.widget.ontopbutton(c),
-            awful.titlebar.widget.closebutton(c),
+            {
+                awful.titlebar.widget.closebutton(c),
+                margins = dpi(5),
+                layout = wibox.container.margin
+            },
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
