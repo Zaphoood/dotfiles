@@ -16,7 +16,7 @@ volume_change = 5
 spotify_control = "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
 
 -- File explorer
-file_explorer = "nautilus"
+file_explorer = terminal .. " -e ranger"
 
 -- Keyboard layout and shortcuts
 configuration.keys = require("configuration.keys")
