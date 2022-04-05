@@ -1,7 +1,3 @@
----------------------------
--- Default awesome theme --
----------------------------
-
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -23,7 +19,7 @@ theme.black       = "#302d41" -- Black 3
 theme.white       = "#c3bac6" -- Gray 2
 theme.light_white = "#d9e0ee" -- White
 theme.pink        = "#f5c2e7" -- Pink
-theme.red         = "#F28fad" -- Red
+theme.red         = "#f28fad" -- Red
 theme.orange      = "#f8bd96" -- Peach
 theme.yellow      = "#fae3b0" -- Yellow
 theme.green       = "#abe9b3" -- Green

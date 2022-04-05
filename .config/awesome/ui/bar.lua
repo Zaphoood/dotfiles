@@ -1,7 +1,10 @@
 local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
+
 local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 -- Keyboard layout
 local keys = require("configuration.keys")
@@ -115,7 +118,25 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        style = {
+            shape = gears.shape.rounded_bar,
+        },
+        widget_template = {
+                {
+                    {
+                        {
+                            id = "text_role",
+                            widget = wibox.widget.textbox,
+                        },
+                        left = dpi(10),
+                        widget = wibox.container.margin,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                id = "background_role",
+                widget = wibox.container.background,
+        },
     }
 
     -- Create the wibox
