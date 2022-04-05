@@ -8,6 +8,9 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 require("awful.autofocus")
 
+-- Notification library
+local naughty = require("naughty")
+
 -- {{{ Panic
 -- Set up a key combination that executes a script which restarts awesome
 -- with a guaranteed working configuration. This is useful when things go really wrong.
@@ -25,11 +28,7 @@ root.keys(panic_mode_key)
 -- Theme
 beautiful.init("/home/mathis/.config/awesome/themes/main/theme.lua")
 
--- Notification library
-local naughty = require("naughty")
 
--- My stuff --
--- Configuration
 local config = require("configuration")
 local ui = require("ui")
 
@@ -58,3 +57,5 @@ do
 end
 -- }}}
 
+-- Autostart
+awful.spawn.with_shell("~/.config/awesome/autostart.sh")
