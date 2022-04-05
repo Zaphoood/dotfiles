@@ -9,8 +9,8 @@ local theme = {}
 
 theme.font = "JetBrainsMono Nerd Font 10"
 
-theme.useless_gap = 3
-theme.border_width = 2
+theme.useless_gap = dpi(3)
+theme.border_width = 0
 
 -- Using the catppuccin color palette:
 -- https://github.com/catppuccin/catppuccin#-palette 
@@ -29,11 +29,6 @@ theme.purple      = "#ddb6f2" -- Mauve
 theme.grey        = "#6e6c7e" -- Gray 0
 -- theme.grey     = "#988ba2" -- Gray 1
 -- theme.grey     = "#c3bac6" -- Gray 2
-
--- I try to follow the 60-30-10 rule: https://www.youtube.com/watch?v=UWwNIMHFdW4
-local primary = theme.black
-local secondary = theme.grey
-local accent = theme.purple
 
 theme.bg_normal = theme.deep_black
 theme.bg_focus = theme.black
@@ -93,8 +88,9 @@ theme.tasklist_plain_task_name = true
 -- You can add as many variables as
 -- you wish and access them by using
 -- beautiful.variable in your rc.lua
+theme.client_corner_radius = dpi(5)
 
--- Define the image to load
+-- Titlebar icons
 theme.titlebar_close_button_normal = theme_path .. "titlebar/close_normal.png"
 theme.titlebar_close_button_focus = theme_path .. "titlebar/close_focus.png"
 
@@ -123,7 +119,7 @@ theme.titlebar_maximized_button_focus_active = theme_path .. "titlebar/maximized
 
 theme.wallpaper = theme_path .. "wallpapers/omoide-no-marnie.jpg"
 
--- You can use your own layout icons like this:
+-- Layout icons
 theme.layout_fairh = theme_path .. "layouts/fairhw.png"
 theme.layout_fairv = theme_path .. "layouts/fairvw.png"
 theme.layout_floating = theme_path .. "layouts/floatingw.png"
