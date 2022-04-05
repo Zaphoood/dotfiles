@@ -6,7 +6,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Notifications library
 local naughty = require("naughty")
-naughty.notify({ text = os.getenv("HOME") })
 
 -- Helpers (e. g. for volume change)
 local helpers = require("helpers")

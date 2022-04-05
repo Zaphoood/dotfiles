@@ -1,6 +1,5 @@
 local wibox = require("wibox")
 local awful = require("awful")
-local naughty = require("naughty")
  
 volume_widget = wibox.widget.textbox()
 volume_widget:set_align("right")
@@ -17,7 +16,6 @@ function update_volume(widget)
     status = string.match(status, "%[(o[^%]]*)%]")
 
     -- Prepend spaces in order to assure constant with
-    -- naughty.notify({ text = tostring(#volume) })
     if volume_str_len  < 1 then
         volume = " " .. volume
     end
