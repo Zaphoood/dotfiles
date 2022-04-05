@@ -19,6 +19,9 @@ spotify_control = "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.sp
 -- File explorer
 file_explorer = terminal .. " -e ranger"
 
+-- Lock screen
+lock_screen = os.getenv("HOME") .. "/.config/awesome/script/lock.sh"
+
 -- Keyboard layout and shortcuts
 configuration.keys = require("configuration.keys")
 root.keys(configuration.keys.globalkeys)

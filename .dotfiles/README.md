@@ -16,3 +16,4 @@ config checkout
  * [dbus-send](https://linux.die.net/man/1/dbus-send)
  * [amixer](https://linux.die.net/man/1/amixer)
  * [ranger](https://github.com/ranger/ranger) together with [Überzug](https://github.com/seebye/ueberzug)
+ * [i3lock-color](https://github.com/Raymo111/i3lock-color)

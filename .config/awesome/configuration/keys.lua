@@ -6,6 +6,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Notifications library
 local naughty = require("naughty")
+naughty.notify({ text = os.getenv("HOME") })
 
 -- Helpers (e. g. for volume change)
 local helpers = require("helpers")
@@ -133,7 +134,7 @@ keys.globalkeys = gears.table.join(
 
       -- My own keybindings
       -- Modkey + Alt + L: Lock screen
-      awful.key({ modkey, alt }, "l", function() awful.util.spawn("lock") end,
+      awful.key({ modkey, alt }, "l", function() awful.util.spawn(lock_screen) end,
                 {description = "lock screen", group = "other"}),
       -- Modkey + E: File explorer (nautilus)
       awful.key({ modkey }, "e", function() awful.util.spawn(file_explorer) end,
