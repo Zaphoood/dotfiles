@@ -1,15 +1,25 @@
 local helpers = {}
 
 local awful = require("awful")
+local naughty = require("naughty")
 
 function helpers.change_volume(x) 
     sign = x > 0 and "+" or "-"
-    awful.util.spawn(volume_control .. " set Master " .. tostring(volume_change) .. "%" .. sign)
-    awful.util.spawn(volume_control .. " set Master unmute")
+    cmd = volume_control .. " set Master " .. tostring(volume_change) .. "%" .. sign
+    cmd = cmd .. " ; " .. volume_control .. " set Master unmute" 
+    -- Run command to change volume
+    awful.spawn.easy_async(cmd,
+    function(stdout, stderr, reason, exit_code)
+        -- Emit signal to update volume widget afterwards
+        awesome.emit_signal("signals::volume_change")
+    end)
 end
 
 function helpers.toggle_mute(x) 
-     awful.util.spawn(volume_control .. " set Master toggle")
+    awful.spawn.easy_async(volume_control .. " set Master toggle",
+    function(stdout, stderr, reason, exit_code)
+        awesome.emit_signal("signals::volume_change")
+    end)
 end
 
 function helpers.spotify_play_pause(x)

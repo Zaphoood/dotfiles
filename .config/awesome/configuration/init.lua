@@ -7,6 +7,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- }}}
 
 -- Command for setting volume
+-- The `-D pulse` flag is necessary when using pulseaudio
 volume_control = "amixer -D pulse"
 -- Amount in percent by which the audio volume is changed
 -- when a volume +/- key is pressed
