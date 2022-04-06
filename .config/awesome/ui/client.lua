@@ -100,6 +100,14 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
+    minimize = awful.titlebar.widget.minimizebutton(c)
+    minimize:connect_signal("mouse::enter", function(m) m.opacity = beautiful.button_hover_opacity end)
+    minimize:connect_signal("mouse::leave", function(m) m.opacity = 1 end)
+
+    close = awful.titlebar.widget.closebutton(c)
+    close:connect_signal("mouse::enter", function(m) m.opacity = beautiful.button_hover_opacity end)
+    close:connect_signal("mouse::leave", function(m) m.opacity = 1 end)
+
     awful.titlebar(c) : setup {
         { -- Left
             {
@@ -120,17 +128,19 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             -- awful.titlebar.widget.floatingbutton(c),
-            -- awful.titlebar.widget.maximizedbutton(c),
-            -- awful.titlebar.widget.stickybutton(c),
-            -- awful.titlebar.widget.ontopbutton(c),
             {
-                awful.titlebar.widget.closebutton(c),
+                minimize,
+                margins = dpi(5),
+                layout = wibox.container.margin
+            },
+            {
+                close,
                 margins = dpi(5),
                 layout = wibox.container.margin
             },
             layout = wibox.layout.fixed.horizontal()
         },
-        layout = wibox.layout.align.horizontal
+        layout = wibox.layout.align.horizontal,
     }
 end)
 

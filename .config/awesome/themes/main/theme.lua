@@ -45,6 +45,8 @@ theme.border_normal = theme.black
 theme.border_focus = theme.grey
 theme.border_marked = theme.grey
 
+theme.button_hover_opacity = 0.65
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

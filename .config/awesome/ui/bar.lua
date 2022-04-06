@@ -64,12 +64,10 @@ local tasklist_buttons = gears.table.join(
                 {raise = true}
             )
         end
-    end)
-    --[[
+    end),
     awful.button({ }, 3, function()
         awful.menu.client_list({ theme = { width = 250 } })
     end)
-    --]]
 )
 
 
