@@ -5,6 +5,7 @@ local wibox = require("wibox")
 
 -- Keyboard layout
 local keys = require("configuration.keys")
+local helpers = require("helpers")
 
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -110,11 +111,7 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c) : setup {
         { -- Left
-            {
-                awful.titlebar.widget.iconwidget(c),
-                margins = dpi(3),
-                layout = wibox.container.margin
-            },
+            helpers.wrap_margin(awful.titlebar.widget.iconwidget(c), dpi(3)),
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
@@ -128,16 +125,8 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             -- awful.titlebar.widget.floatingbutton(c),
-            {
-                minimize,
-                margins = dpi(5),
-                layout = wibox.container.margin
-            },
-            {
-                close,
-                margins = dpi(5),
-                layout = wibox.container.margin
-            },
+            helpers.wrap_margin(minimize, dpi(5)),
+            helpers.wrap_margin(close, dpi(5)),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal,

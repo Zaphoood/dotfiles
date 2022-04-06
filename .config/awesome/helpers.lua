@@ -1,8 +1,10 @@
 local helpers = {}
 
 local awful = require("awful")
+local wibox = require("wibox")
 local naughty = require("naughty")
 
+-- {{{ Volume control
 function helpers.change_volume(x) 
     sign = x > 0 and "+" or "-"
     cmd = volume_control .. " set Master " .. tostring(volume_change) .. "%" .. sign
@@ -21,7 +23,9 @@ function helpers.toggle_mute(x)
         awesome.emit_signal("signals::volume_change")
     end)
 end
+-- }}}
 
+-- {{{ Media
 function helpers.spotify_play_pause(x)
     awful.util.spawn(spotify_control .. "PlayPause")
 end
@@ -33,5 +37,15 @@ end
 function helpers.spotify_previous(x)
     awful.util.spawn(spotify_control .. "Previous")
 end
+-- }}}
+
+-- {{{ UI
+function helpers.wrap_margin(widget, margin)
+    return wibox.widget {
+        { widget = widget },
+        margins = margin,
+        widget = wibox.container.margin }
+end
+-- }}}
 
 return helpers

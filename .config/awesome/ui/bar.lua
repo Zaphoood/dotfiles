@@ -13,6 +13,7 @@ local keys = require("configuration.keys")
 local volume = require("volume")
 volume.update(volume.widget)
 
+local helpers = require("helpers")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -109,12 +110,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.layoutbox_inner = awful.widget.layoutbox(s)
-    -- Wrap it inside a margin
-    s.layoutbox = wibox.widget { 
-        { widget = s.layoutbox_inner:get_children()[1] },
-        margins = dpi(2),
-        widget = wibox.container.margin
-    }
+    -- Wrap the widget inside a margin
+    s.layoutbox = helpers.wrap_margin(s.layoutbox_inner:get_children()[1], dpi(2))
     s.layoutbox:buttons(gears.table.join(
         -- Click to change layout
         awful.button({ }, 1, function () awful.layout.inc( 1) end),
