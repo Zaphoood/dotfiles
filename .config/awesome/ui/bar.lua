@@ -51,7 +51,14 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+textclock_inner = wibox.widget.textclock()
+-- Wrap it inside a background widget since I haven't figured
+-- out any other way to set the foreground color
+textclock = wibox.widget {
+    { widget = textclock_inner },
+    fg = beautiful.fg_focus,
+    widget = wibox.widget.background,
+}
 
 -- Create a wibox for each screen and add it
 local tasklist_buttons = gears.table.join(
@@ -158,7 +165,7 @@ awful.screen.connect_for_each_screen(function(s)
             -- Volume control widget
             volume.widget,
             -- wibox.widget.systray(),
-            mytextclock,
+            textclock,
             s.mylayoutbox,
             layout = wibox.layout.fixed.horizontal,
         },
