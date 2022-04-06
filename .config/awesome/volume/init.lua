@@ -1,10 +1,17 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local beautiful = require("beautiful")
 local naughty = require("naughty")
  
-volume_widget = wibox.widget.textbox()
-volume_widget:set_align("right")
-volume_widget:set_markup("  0%")
+volume_widget = wibox.widget {
+    {
+        markup = "  0%",
+        align = "right",
+        widget = wibox.widget.textbox,
+    },
+    fg = beautiful.fg_focus,
+    widget = wibox.widget.background,
+}
  
 function update_volume(widget)
     awful.spawn.easy_async(volume_control .. " sget Master",
@@ -32,7 +39,7 @@ function update_volume(widget)
             volume = "<s>" .. volume .. "</s>"
         end
 
-        widget:set_markup(volume)
+        widget:get_children()[1]:set_markup(volume)
     end)
 end
  
