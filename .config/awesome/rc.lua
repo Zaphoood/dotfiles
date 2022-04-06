@@ -6,7 +6,6 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
-require("awful.autofocus")
 
 -- Notification library
 local naughty = require("naughty")
@@ -17,11 +16,11 @@ local naughty = require("naughty")
 local panic_mode_key = gears.table.join(
   awful.key({ "Mod4" , "Mod1" }, "p",
       function ()
-          awful.util.spawn("/home/mathis/.config/awesome/restore-rc.sh")
+          awful.util.spawn(os.getenv("HOME") .. "/.config/awesome/restore-rc.sh")
       end
   )
 )
--- Note that the above key combination will removed by a later root.keys() call
+-- Note that this key combination will removed by a later root.keys() call
 root.keys(panic_mode_key)
 -- }}}
 
@@ -57,5 +56,3 @@ do
 end
 -- }}}
 
--- Autostart
-awful.spawn.with_shell("~/.config/awesome/autostart.sh")
