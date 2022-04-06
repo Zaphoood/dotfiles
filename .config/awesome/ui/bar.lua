@@ -11,7 +11,8 @@ local keys = require("configuration.keys")
 
 -- Volume control
 local volume = require("volume")
---
+volume.update(volume.widget)
+
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
