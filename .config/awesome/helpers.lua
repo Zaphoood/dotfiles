@@ -7,14 +7,23 @@ local naughty = require("naughty")
 -- {{{ Volume control
 function helpers.change_volume(x) 
     sign = x > 0 and "+" or "-"
-    cmd = volume_control .. " set Master " .. tostring(volume_change) .. "%" .. sign
-    cmd = cmd .. " ; " .. volume_control .. " set Master unmute" 
-    -- Run command to change volume
-    awful.spawn.easy_async(cmd,
-    function(stdout, stderr, reason, exit_code)
-        -- Emit signal to update volume widget afterwards
-        awesome.emit_signal("signals::volume_change")
-    end)
+    cmd_change_volume = volume_control .. " set Master " .. tostring(volume_change) .. "%" .. sign
+    cmd_unmute = volume_control .. " set Master unmute" 
+    -- In order to run to commands consecutively, the second command is executed by the callback
+    -- function of the first one. This way, we ensure that both commands have finished executing
+    -- before emitting the `volume_change` signal
+    -- Change volume
+    awful.spawn.easy_async(
+        cmd_change_volume,
+        function(stdout, stderr, reason, exit_code)
+            -- Unmute 
+            awful.spawn.easy_async(
+                cmd_unmute,
+                function(stdout, stderr, reason, exit_code)
+                    -- Emit signal to update volume widget afterwards
+                    awesome.emit_signal("signals::volume_change")
+                end)
+        end)
 end
 
 function helpers.toggle_mute(x) 
