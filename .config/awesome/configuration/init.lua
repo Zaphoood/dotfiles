@@ -18,6 +18,8 @@ volume_change = 5
 spotify_control = "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
 -- File explorer
 file_explorer = terminal .. " -e ranger"
+-- Shutdown
+shutdown_cmd = "shutdown now"
 -- Lock screen
 lock_screen = os.getenv("HOME") .. "/.config/awesome/script/lock.sh"
 -- }}}

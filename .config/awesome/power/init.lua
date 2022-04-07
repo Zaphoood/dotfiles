@@ -1,6 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local naughty = require("naughty")
 
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
@@ -9,14 +10,15 @@ local dpi = xresources.apply_dpi
 local helpers = require("helpers")
 
 local menu_items = {
-    { name = "Lock", icon = "", callback = function() end },
-    { name = "Log out", icon = "", callback = function() end },
-    { name = "Power off", icon = "", callback = function() end },
+    { name = "Lock",      icon = beautiful.icons.lock, callback = helpers.lock },
+    { name = "Sleep",     icon = beautiful.icons.sleep, callback = helpers.sleep },
+    { name = "Log out",   icon = beautiful.icons.log_out, callback = helpers.logout },
+    { name = "Power off", icon = beautiful.icons.power, callback = helpers.shutdown },
 }
 
 local widget = wibox.widget {
     {
-        image = beautiful.power,
+        image = beautiful.icons.power,
         resize = true,
         widget = wibox.widget.imagebox
     },
@@ -33,10 +35,13 @@ local popup = awful.popup {
     shape = function(cr, width, height)
         gears.shape.rounded_rect(cr, width, height, beautiful.widget_corner_radius)
     end,
-    border_width = 1,
+    border_width = dpi(1),
     border_color = beautiful.bg_focus,
-    maximum_width = 400,
-    offset = { y = 5 },
+    maximum_width = dpi(400),
+    offset = {
+        x = dpi(-2),
+        y = dpi(5)
+    },
     widget = {}
 }
 
@@ -45,23 +50,48 @@ for _, item in ipairs(menu_items) do
     local row = wibox.widget {
         {
             {
-                image = item.icon,
-                forced_width = dpi(16),
-                forced_height = dpi(16),
-                widget = wibox.widget.imagebox,
+                {
+                    {
+                        image = item.icon,
+                        forced_width = dpi(16),
+                        forced_height = dpi(16),
+                        widget = wibox.widget.imagebox,
+                    },
+                    left = dpi(5),
+                    right = dpi(5),
+                    widget = wibox.container.margin,
+                },
+                {
+                    text = item.name,
+                    widget = wibox.widget.textbox
+                },
+                layout = wibox.layout.fixed.horizontal
             },
-            {
-                text = item.name,
-                widget = wibox.widget.textbox
-            },
-            -- spacing = dpi(12),
-            layout = wibox.layout.fixed.horizontal
+            right = dpi(5),
+            top = dpi(3),
+            bottom = dpi(3),
+            widget = wibox.container.margin,
         },
-        right = dpi(5),
-        top = dpi(3),
-        bottom = dpi(3),
-        widget = wibox.container.margin,
+        fg = beautiful.white, -- Sets the text color of the contained textbox
+        widget = wibox.container.background
     }
+    -- Change background when hovering
+    row:connect_signal("mouse::enter", function(c)
+        c:set_bg(beautiful.bg_focus)
+        c:set_fg(beautiful.light_white)
+    end)
+    row:connect_signal("mouse::leave", function(c)
+        c:set_bg(beautiful.bg_normal)
+        c:set_fg(beautiful.white)
+    end)
+
+    -- Execute callback when clicked
+    row:buttons(gears.table.join(awful.button({}, 1, function()
+        -- First, hide pop-up
+        popup.visible = false
+        -- Then, run callback function
+        item.callback(row)
+    end)))
     table.insert(rows, row)
 end
 popup:setup(rows)

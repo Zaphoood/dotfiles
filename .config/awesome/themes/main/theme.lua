@@ -143,8 +143,13 @@ theme.layout_cornerse = theme_path .. "layouts/cornersew.png"
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
 
--- Power menu icon
-theme.power = icons_path .. "/powerw.svg"
+theme.icons = {
+    -- Power menu
+    power   = icons_path .. "/power.svg",
+    lock    = icons_path  .. "/lock.svg",
+    sleep   = icons_path .. "/sleep.png",
+    log_out = icons_path  .. "/user.svg",
+}
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
