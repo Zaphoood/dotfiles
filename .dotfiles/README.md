@@ -11,9 +11,6 @@ config dot-cfg --local status.showUntrackedFiles no
 config checkout
 ```
 
-### Dependencies
- * [keyboard layout widget](https://github.com/echuraev/keyboard_layout)
- * [dbus-send](https://linux.die.net/man/1/dbus-send)
- * [amixer](https://linux.die.net/man/1/amixer)
- * [ranger](https://github.com/ranger/ranger) together with [Überzug](https://github.com/seebye/ueberzug)
- * [i3lock-color](https://github.com/Raymo111/i3lock-color)
+## Programs used
+ * Window manager: [i3](https://i3wm.org/)
+ * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
