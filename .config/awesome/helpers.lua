@@ -90,4 +90,24 @@ function helpers.wrap_margin(...)
 end
 -- }}}
 
+-- {{{ OS
+function helpers.shutdown()
+    -- TODO: Check if programs are still running
+    awful.util.spawn(shutdown_cmd)
+end
+
+function helpers.logout()
+    awesome.quit()
+end
+
+function helpers.lock()
+    -- `lock_screen` is a command defined in configuration/init.lua
+    awful.spawn.easy_async(lock_screen)
+end
+
+function helpers.sleep()
+    naughty.notify({ title = "Oopsie whoopise uwu",
+        text = "Sleep is not implemented yet" })
+end
+-- }}}
 return helpers

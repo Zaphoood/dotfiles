@@ -9,9 +9,12 @@ local dpi = xresources.apply_dpi
 -- Keyboard layout
 local keys = require("configuration.keys")
 
--- Volume control
+-- Volume control and widget
 local volume = require("volume")
 volume.update(volume.widget)
+
+-- Power menu
+local power = require("power")
 
 local helpers = require("helpers")
 -- Load Debian menu entries
@@ -111,7 +114,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.layoutbox_inner = awful.widget.layoutbox(s)
     -- Wrap the widget inside a margin
-    s.layoutbox = helpers.wrap_margin(s.layoutbox_inner:get_children()[1], dpi(2))
+    s.layoutbox = helpers.wrap_margin(
+        s.layoutbox_inner:get_children()[1],
+        dpi(3))
     s.layoutbox:buttons(gears.table.join(
         -- Click to change layout
         awful.button({ }, 1, function () awful.layout.inc( 1) end),
@@ -153,6 +158,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
+    -- Create a power menu widget
+    power = power.widget
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -176,6 +184,7 @@ awful.screen.connect_for_each_screen(function(s)
             textclock,
             s.layoutbox,
             layout = wibox.layout.fixed.horizontal,
+            power,
         },
     }
 end)
