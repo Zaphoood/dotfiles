@@ -11,6 +11,7 @@ config dot-cfg --local status.showUntrackedFiles no
 config checkout
 ```
 
-## Programs used
+## Stuff
  * Window manager: [i3](https://i3wm.org/)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
+ * Font: [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
