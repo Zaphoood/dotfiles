@@ -15,3 +15,4 @@ config checkout
  * Window manager: [i3](https://i3wm.org/)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
  * Font: [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
+ * Media control: [dbus-send](https://linux.die.net/man/1/dbus-send)
