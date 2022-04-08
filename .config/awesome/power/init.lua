@@ -9,6 +9,8 @@ local dpi = xresources.apply_dpi
 
 local helpers = require("helpers")
 
+local power = {}
+
 local menu_items = {
     { name = "Lock",      icon = beautiful.icons.lock, callback = helpers.lock },
     { name = "Sleep",     icon = beautiful.icons.sleep, callback = helpers.sleep },
@@ -16,7 +18,7 @@ local menu_items = {
     { name = "Power off", icon = beautiful.icons.power, callback = helpers.shutdown },
 }
 
-local widget = wibox.widget {
+power.widget = wibox.widget {
     {
         image = beautiful.icons.power,
         resize = true,
@@ -96,7 +98,7 @@ for _, item in ipairs(menu_items) do
 end
 popup:setup(rows)
 
-widget:buttons(
+power.widget:buttons(
     awful.util.table.join(
         awful.button({}, 1, function()
             if popup.visible then
@@ -107,4 +109,4 @@ widget:buttons(
     end))
 )
 
-return { widget = widget }
+return power
