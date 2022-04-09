@@ -6,10 +6,15 @@ Clone the repository
 ```
 echo ".cfg" >> .gitignore
 git clone https://github.com/Zaphoood/new-dotfiles $HOME/.cfg
-alias dot-cfg='/usr/bin/git --git-dir=$HOME/.cfg/.git --work-tree=$HOME'
-config dot-cfg --local status.showUntrackedFiles no
-config checkout
 ```
+
+Create an alias for managing the repository
+```
+alias dot-cfg='/usr/bin/git --git-dir=$HOME/.cfg/.git --work-tree=$HOME'
+dot-cfg config --local status.showUntrackedFiles no
+```
+
+Useful tip: If you have want to commit all tracked files with changes to them, use `dot-cfg add -u` (instead of the usual `dot-cfg add -A`).
 
 ## Stuff
  * Window manager: [i3](https://i3wm.org/)
