@@ -31,6 +31,7 @@ set $text-inactive #e9e9f7
 # Script for locking the screen using i3lock-color
 set $lock_screen "$HOME/scripts/lock.sh"
 set $program_launcher "rofi -show drun -columns 3"
+set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -122,7 +123,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# Note: this is disabled because I use Super + space to cycle keyboard layouts
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -178,6 +180,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # lock screen
 bindsym $mod+$alt+l exec $lock_screen
 
+# change keyboard layout
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -227,3 +231,4 @@ bar {
 }
 
 exec_always feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg
+exec_always $set_keyboard_layout
