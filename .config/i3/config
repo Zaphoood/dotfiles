@@ -20,8 +20,17 @@ set $right l
 # Alias for the `Alt` key
 set $alt Mod1
 
+# Colors
+# Inspired by the catppuccin theme
+set $bg            #3f3c4d
+set $bg-inactive   #1E1E2E
+set $bg-urgent     #E8A2AF
+set $text          #D9E0EE
+set $text-inactive #e9e9f7
+
 # Script for locking the screen using i3lock-color
 set $lock_screen "$HOME/scripts/lock.sh"
+set $program_launcher "rofi -show run -columns 3"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -64,8 +73,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# start a program launcher
+bindsym $mod+d exec $program_launcher
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -195,14 +204,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Colors
-# Inspired by the catppuccin theme
-set $bg            #3f3c4d
-set $bg-inactive   #1E1E2E
-set $bg-urgent     #E8A2AF
-set $text          #D9E0EE
-set $text-inactive #e9e9f7
 
 # Window
 #                        border        bg            text             indicator
