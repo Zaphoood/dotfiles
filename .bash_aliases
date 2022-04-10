@@ -27,7 +27,7 @@ function md() {
         echo 'Usage: md <filename>'
         return
     fi
-    pandoc -t plain "$1" | less
+    glow -p "$1"
 }
 
 # Cool matrix effect
