@@ -145,3 +145,6 @@ export PS1="${VENV}${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[
 # Set library path for linker
 export LD_LIBRARY_PATH=/usr/local/lib
 
+# Disable ugly highlight colors for `ls`
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
