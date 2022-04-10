@@ -120,7 +120,8 @@ handle_extension() {
             exiftool "${FILE_PATH}" && exit 5
             ;;
         markdown|md)
-            pandoc -s -t markdown -- "${FILE_PATH}" &&  exit 5;;
+            # pandoc -s -t markdown -- "${FILE_PATH}" &&  exit 5;;
+            glow -s dark -- "${FILE_PATH}" &&  exit 5;;
     esac
 }
 
