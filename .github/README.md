@@ -18,6 +18,7 @@ Useful tip: If you have want to commit all tracked files with changes to them, u
 
 ## Stuff
  * Window manager: [i3](https://i3wm.org/)
+ * Compositor: [picom](https://github.com/yshui/picom)
  * Application launcher: [rofi](https://github.com/davatorium/rofi)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)

@@ -32,6 +32,8 @@ set $text-inactive #e9e9f7
 set $lock_screen "$HOME/scripts/lock.sh"
 set $program_launcher "rofi -show drun -columns 3"
 set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
+set $set_wallpaper "feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg"
+set $compositor "picom -b"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -245,5 +247,6 @@ bar {
     }
 }
 
-exec_always feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg
+exec_always $set_wallpaper
 exec_always $set_keyboard_layout
+exec_always $compositor
