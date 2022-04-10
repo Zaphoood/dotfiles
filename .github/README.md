@@ -1,5 +1,5 @@
 # Dotfiles
-The idea for managing dotfiles this way was stolen from [this blogpost](https://www.ackama.com/what-we-think/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained/).
+I got the idea for managing my dotfiles this way from [this blogpost](https://www.ackama.com/what-we-think/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained/).
 
 ## Installing
 Clone the repository
