@@ -36,3 +36,5 @@ alias matrix="cmatrix -s"
 # Alias for managing dotfiles in a git repository
 # that has its working tree set to $HOME
 alias dot-cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
+
+alias set-brightness="xrandr --output HDMI-0 --brightness"
