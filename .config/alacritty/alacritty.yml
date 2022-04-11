@@ -1,4 +1,4 @@
-# Catppuccin
+# Catppuccin color scheme
 colors:
   # Default colors
   primary:
@@ -12,29 +12,29 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x6E6C7E'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
+    black:   '0x6E6C7E' # Gray 0
+    red:     '0xF28FAD' # Red
+    green:   '0xABE9B3' # Green
+    yellow:  '0xFAE3B0' # Yellow
+    blue:    '0x96CDFB' # Blue
+    magenta: '0xF5C2E7' # Pink
+    cyan:    '0x89DCEB' # Sky
+    white:   '0xD9E0EE' # White
 
   # Bright colors
   bright:
-    black:   '0x988BA2'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
+    black:   '0x988BA2' # Gray 1
+    red:     '0xF28FAD' # Red
+    green:   '0xABE9B3' # Green
+    yellow:  '0xFAE3B0' # Yellow
+    blue:    '0x96CDFB' # Blue
+    magenta: '0xF2CDCD' # Flamingo
+    cyan:    '0xB5E8E0' # Teal
+    white:   '0xD9E0EE' # White
 
   indexed_colors:
-    - { index: 16, color: '0xF8BD96' }
-    - { index: 17, color: '0xF5E0DC' }
+    - { index: 16, color: '0xF8BD96' } # Peach
+    - { index: 17, color: '0xF5E0DC' } # Rosewater
 
 window:
   padding:
