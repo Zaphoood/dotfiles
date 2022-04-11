@@ -55,9 +55,10 @@ nnoremap <C-H> <C-W><C-H>
 let mapleader = ","
 
 " Enable folding with spacebar
-" set foldmethod=indent
-" set foldlevel=99
-" nnoremap <space> za
+nnoremap <space> za
+autocmd Filetype python set foldmethod=indent
+autocmd Filetype c,cpp set foldmethod=syntax
+set foldlevel=99
 
 
 " Tabs as spaces
