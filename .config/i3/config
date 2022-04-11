@@ -31,6 +31,7 @@ set $text-inactive #e9e9f7
 set $lock_screen "$HOME/scripts/lock.sh"
 set $compositor "picom -b"
 set $program_launcher "rofi -show drun -columns 3"
+set $polybar $HOME/.config/polybar/launch.sh
 set $set_wallpaper "feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg"
 set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
 set $volume_up amixer -D pulse set Master 5%+
@@ -226,21 +227,8 @@ client.focused_inactive  $bg-inactive  $bg-inactive  $text-inactive   $bg-inacti
 client.unfocused         $bg-inactive  $bg-inactive  $text-inactive   $bg-inactive
 client.urgent            $bg-urgent    $bg-urgent    $text            $bg-urgent
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    status_command $HOME/.config/i3/bumblebee-status/bumblebee-status \
-        -m date time pasink
-    strip_workspace_numbers yes
-    colors {
-        background $bg-inactive
-        #                   border        bg            text
-        focused_workspace   $bg           $bg           $text
-        inactive_workspace  $bg-inactive  $bg-inactive  $text-inactive
-        urgent_workspace    $bg-urgent    $bg-urgent    $text
-    }
-}
 
 exec_always --no-startup-id $set_wallpaper
 exec_always --no-startup-id $set_keyboard_layout
 exec_always --no-startup-id $compositor
+exec_always --no-startup-id $polybar

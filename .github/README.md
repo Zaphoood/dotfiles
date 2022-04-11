@@ -20,6 +20,7 @@ Useful tip: If you have want to commit all tracked files with changes to them, u
  * Window manager: [i3](https://i3wm.org/)
  * Compositor: [picom](https://github.com/yshui/picom)
  * Application launcher: [rofi](https://github.com/davatorium/rofi)
+ * Status bar: [polybar](https://github.com/polybar/polybar)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)
  * Media control: [dbus-send](https://linux.die.net/man/1/dbus-send)
