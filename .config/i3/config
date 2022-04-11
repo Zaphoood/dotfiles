@@ -28,12 +28,14 @@ set $bg-urgent     #E8A2AF
 set $text          #D9E0EE
 set $text-inactive #e9e9f7
 
-# Script for locking the screen using i3lock-color
 set $lock_screen "$HOME/scripts/lock.sh"
-set $program_launcher "rofi -show drun -columns 3"
-set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
-set $set_wallpaper "feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg"
 set $compositor "picom -b"
+set $program_launcher "rofi -show drun -columns 3"
+set $set_wallpaper "feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg"
+set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
+set $volume_up amixer -D pulse set Master 5%+
+set $volume_down amixer -D pulse set Master 5%-
+set $toggle_mute amixer -D pulse set Master toggle
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -56,10 +58,10 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id $volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id $volume_down
+bindsym XF86AudioMute        exec --no-startup-id $toggle_mute
 
 # Send media keys to Spotify
 bindsym XF86AudioPlay exec dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
