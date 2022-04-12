@@ -28,12 +28,12 @@ set $bg-urgent     #E8A2AF
 set $text          #D9E0EE
 set $text-inactive #e9e9f7
 
-set $lock_screen "$HOME/scripts/lock.sh"
-set $compositor "picom -b"
-set $program_launcher "rofi -show drun -columns 3"
+set $lock_screen $HOME/scripts/lock.sh
+set $compositor picom -b
+set $program_launcher rofi -show drun -columns 3
 set $polybar $HOME/.config/polybar/launch.sh
-set $set_wallpaper "feh --bg-scale /home/mathis/Pictures/wallpaper/omoide-no-marnie.jpg"
-set $set_keyboard_layout "setxkbmap -layout us,de,latam -option grp:win_space_toggle"
+set $set_wallpaper feh --bg-scale $HOME/Pictures/wallpaper/omoide-no-marnie.jpg
+set $set_keyboard_layout setxkbmap -layout us,de,latam -option grp:win_space_toggle
 set $volume_up amixer -D pulse set Master 5%+
 set $volume_down amixer -D pulse set Master 5%-
 set $toggle_mute amixer -D pulse set Master toggle
