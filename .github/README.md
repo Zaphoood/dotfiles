@@ -14,18 +14,30 @@ alias dot-cfg='/usr/bin/git --git-dir=$HOME/.cfg/.git --work-tree=$HOME'
 dot-cfg config --local status.showUntrackedFiles no
 ```
 
+Download the wallpaper (see below) or any other wallpaper you like and put it in `$HOME/Pictures/wallpaper/`. You may need to change the path to the wallpaper in i3's config file accordingly.
+
 Useful tip: If you have want to commit all tracked files with changes to them, use `dot-cfg add -u` (instead of the usual `dot-cfg add -A`).
 
 ## Stuff
+
+Programs
+
  * Window manager: [i3](https://i3wm.org/)
  * Compositor: [picom](https://github.com/yshui/picom)
  * Application launcher: [rofi](https://github.com/davatorium/rofi)
  * Status bar: [polybar](https://github.com/polybar/polybar)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)
- * Media control: [dbus-send](https://linux.die.net/man/1/dbus-send)
- * Wallpaper: A [picture](https://wallpaperaccess.com/download/when-marnie-was-there-2298398) from the movie *When Marnie Was There*
- * Font: [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
+
+Assets
+
+ * Wallpaper: A [scene](https://wallpaperaccess.com/download/when-marnie-was-there-2298398) from the movie *When Marnie Was There*
+ * Fonts: [DejaVu Sans Mono](https://www.fontsquirrel.com/fonts/dejavu-sans) and [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
+
+Other dependencies
+ * [dbus-send](https://linux.die.net/man/1/dbus-send)
+ * [feh](https://feh.finalrewind.org/)
+ * [amixer](https://linux.die.net/man/1/amixer)
 
 ## Thanks
 My rofi theme was inspired by [Eric Murphy's](https://github.com/ericmurphyxyz/archrice) dotfiles.
