@@ -24,6 +24,7 @@ Useful tip: If you have want to commit all tracked files with changes to them, u
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)
  * Media control: [dbus-send](https://linux.die.net/man/1/dbus-send)
+ * Wallpaper: A [picture](https://wallpaperaccess.com/download/when-marnie-was-there-2298398) from the movie *When Marnie Was There*
  * Font: [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
 
 ## Thanks
