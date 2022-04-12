@@ -21,7 +21,7 @@ alias glog="git log --graph --oneline --all"
 # Doxygen
 alias doxy="doxygen"
 
-# Pandoc for viewing Markdown files
+# Pandoc for viewing Markdown files in terminal
 function md() {
     if [ $# -eq 0 ]; then
         echo 'Usage: md <filename>'
@@ -29,6 +29,9 @@ function md() {
     fi
     glow -p "$1"
 }
+
+# Viewing Markdown files as they will be renderer by github
+alias md-view="grip -b"
 
 # Cool matrix effect
 alias matrix="cmatrix -s"
