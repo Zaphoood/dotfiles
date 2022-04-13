@@ -29,7 +29,7 @@ set $text          #D9E0EE
 set $text-inactive #e9e9f7
 
 set $lock_screen $HOME/scripts/lock.sh
-set $compositor picom -b
+set $compositor picom -b --backend=glx
 set $program_launcher rofi -show drun -columns 3
 set $polybar $HOME/.config/polybar/launch.sh
 set $set_wallpaper feh --bg-scale $HOME/Pictures/wallpaper/omoide-no-marnie.jpg
