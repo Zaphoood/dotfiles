@@ -1,7 +1,14 @@
 call plug#begin()
 
+" LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Syntax highlighting using the CXX LSP
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Code formatter
 Plug 'sbdchd/neoformat'
+" Catppuccin colorscheme
 Plug 'catppuccin/nvim', {'name': 'catppuccin'}
+" Seamless copy-pasting between tmux splits
 Plug 'roxma/vim-tmux-clipboard'
 
 call plug#end()
@@ -30,6 +37,7 @@ autocmd FileType python set makeprg=mypy
 autocmd FileType python noremap <F9> :make%<CR>:cw<CR><CR>
 
 " Navigate panes easier
+" TODO: This doesn't work inside tmux right now
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -87,3 +95,7 @@ set termguicolors
 
 " Set colorscheme
 colorscheme catppuccin
+
+" CoC colors
+highlight! CocErrorSign guifg=tomato
+
