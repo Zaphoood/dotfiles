@@ -1,26 +1,10 @@
-" === Plugin ===
-" Set up vundle
-set nocompatible              " required
-filetype off                  " required
+call plug#begin()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'sbdchd/neoformat'
+Plug 'catppuccin/nvim', {'name': 'catppuccin'}
+Plug 'roxma/vim-tmux-clipboard'
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" add all your plugins here
-Plugin 'sbdchd/neoformat'
-Plugin 'catppuccin/nvim', {'name': 'catppuccin'}
-Plugin 'roxma/vim-tmux-clipboard'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Neoformat configuration
 autocmd BufWritePre,TextChanged,InsertLeave *.py Neoformat
