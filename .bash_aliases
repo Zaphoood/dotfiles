@@ -15,7 +15,8 @@ alias clock-tiny="tty-clock -cD"
 # Anime client for watching animes from the terminal
 alias anime="ani-cli"
 
-# git log
+# Git
+alias g="git"
 alias glog="git log --graph --oneline --all"
 
 # Doxygen
