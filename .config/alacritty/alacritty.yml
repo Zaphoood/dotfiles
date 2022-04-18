@@ -63,6 +63,8 @@ font:
 env:
     TERM: xterm-256color
 
+shell:
+  program: /bin/bash
 mouse:
   hide_when_typing: true
 
