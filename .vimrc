@@ -70,8 +70,6 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-" Note that this overwrites the native 'Go-to' mapping of vim that uses ctags
-nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -203,7 +201,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Leader
-let mapleader = ","
+let g:mapleader = ","
 
 " Enable folding with spacebar
 " nnoremap <space> za
