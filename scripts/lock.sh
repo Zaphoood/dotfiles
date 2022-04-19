@@ -51,4 +51,5 @@ i3lock                       \
 --date-size=30               \
 --verif-size=20              \
 --wrong-size=20              \
+--pass-media-keys
 
