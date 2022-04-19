@@ -38,8 +38,9 @@ Assets
  * Fonts: [DejaVu Sans Mono](https://www.fontsquirrel.com/fonts/dejavu-sans) and [Caskaydia Cove NF](https://eng.m.fontke.com/font/64992431/download/)
 
 Other dependencies
- * [dbus-send](https://linux.die.net/man/1/dbus-send)
  * [feh](https://feh.finalrewind.org/)
+ * [dbus-send](https://linux.die.net/man/1/dbus-send)
+ * [playerctl](https://github.com/altdesktop/playerctl)
  * [amixer](https://linux.die.net/man/1/amixer)
 
 ## Thanks
