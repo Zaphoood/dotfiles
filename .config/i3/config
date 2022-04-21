@@ -82,6 +82,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
 
+# kill any window using xkill
+bindsym $mod+$alt+k exec alacritty -e xkill
+
 # start a program launcher
 # mnemonic: Opening a program
 bindsym $mod+o exec --no-startup-id $program_launcher
