@@ -42,3 +42,8 @@ alias matrix="cmatrix -s"
 alias dot-cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
 alias set-brightness="xrandr --output HDMI-0 --brightness"
+
+# Mounting external drives such as USB sticks
+alias usbmount="udisksctl mount -b"
+alias usbunmoun="udisksctl unmount -b"
+
