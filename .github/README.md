@@ -26,6 +26,7 @@ Desktop environment
  * Compositor: [picom](https://github.com/yshui/picom)
  * Application launcher: [rofi](https://github.com/davatorium/rofi)
  * Status bar: [polybar](https://github.com/polybar/polybar)
+ * Notification daemon: [dunst](https://dunst-project.org/)
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
 
 Programs
