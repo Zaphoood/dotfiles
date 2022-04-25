@@ -31,6 +31,7 @@ Desktop environment
 
 Programs
  * Editor: [neovim](https://neovim.io/) with [vim-plug](https://github.com/junegunn/vim-plug) as a plugin manager
+ * File exlporer: [ranger](https://github.com/ranger/ranger) with [Überzug](https://github.com/seebye/ueberzug)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)
 
 Assets
