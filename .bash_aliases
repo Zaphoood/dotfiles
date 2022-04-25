@@ -45,5 +45,5 @@ alias set-brightness="xrandr --output HDMI-0 --brightness"
 
 # Mounting external drives such as USB sticks
 alias usbmount="udisksctl mount -b"
-alias usbunmoun="udisksctl unmount -b"
+alias usbunmount="udisksctl unmount -b"
 
