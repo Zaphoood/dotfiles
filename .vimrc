@@ -16,6 +16,9 @@ call plug#end()
 " Neoformat configuration
 autocmd BufWritePre,TextChanged,InsertLeave *.py Neoformat
 
+" Leader
+let g:mapleader = ","
+
 " === CoC ===
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -199,9 +202,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" Leader
-let g:mapleader = ","
 
 " Enable folding with spacebar
 nnoremap <space> za
