@@ -64,7 +64,7 @@ env:
     TERM: xterm-256color
 
 shell:
-  program: /bin/bash
+  program: /bin/zsh
 mouse:
   hide_when_typing: true
 
