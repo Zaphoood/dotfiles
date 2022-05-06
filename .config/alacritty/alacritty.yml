@@ -37,6 +37,7 @@ colors:
     - { index: 17, color: '0xF5E0DC' } # Rosewater
 
 window:
+  startup_mode: Maximized
   padding:
     x: 2
     y: 2
