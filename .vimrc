@@ -10,6 +10,8 @@ Plug 'sbdchd/neoformat'
 Plug 'catppuccin/nvim', {'name': 'catppuccin'}
 " Seamless copy-pasting between tmux splits
 Plug 'roxma/vim-tmux-clipboard'
+" fugitive (for git)
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
