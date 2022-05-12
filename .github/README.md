@@ -30,9 +30,11 @@ Desktop environment
  * Lock screen: [i3lock-color](https://github.com/Raymo111/i3lock-color)
 
 Programs
+
  * Editor: [neovim](https://neovim.io/) with [vim-plug](https://github.com/junegunn/vim-plug) as a plugin manager
  * File exlporer: [ranger](https://github.com/ranger/ranger) with [Überzug](https://github.com/seebye/ueberzug)
  * Markdown viewer: [glow](https://github.com/charmbracelet/glow)
+ * [ckb-next](https://github.com/ckb-next/ckb-next) for managing Corsair peripherals
 
 Assets
 

@@ -32,6 +32,7 @@ set $lock_screen $HOME/scripts/lock.sh
 set $compositor picom -b --backend=glx
 set $program_launcher rofi -show drun -columns 3
 set $polybar $HOME/.config/polybar/launch.sh
+set $ckbnext ckb-next --background
 set $set_wallpaper feh --bg-scale $HOME/Pictures/wallpaper/omoide-no-marnie.jpg
 set $set_keyboard_layout setxkbmap -layout us,de,latam -option grp:win_space_toggle
 set $volume_up amixer -D pulse set Master 5%+
@@ -244,3 +245,4 @@ exec_always --no-startup-id $set_wallpaper
 exec_always --no-startup-id $set_keyboard_layout
 exec_always --no-startup-id $compositor
 exec_always --no-startup-id $polybar
+exec_always --no-startup-id $ckbnext
