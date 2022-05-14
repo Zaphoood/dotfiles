@@ -66,25 +66,25 @@ bindsym XF86AudioLowerVolume exec --no-startup-id $volume_down
 bindsym XF86AudioMute        exec --no-startup-id $toggle_mute
 
 # Send media keys to Spotify
-bindsym $mod+XF86AudioPlay exec dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym $mod+XF86AudioNext exec dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym $mod+XF86AudioPrev exec dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+XF86AudioPlay exec --no-startup-id dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+XF86AudioNext exec --no-startup-id dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym $mod+XF86AudioPrev exec --no-startup-id dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal (alcritty)
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
 
 # kill any window using xkill
-bindsym $mod+$alt+k exec alacritty -e xkill
+bindsym $mod+$alt+k exec --no-startup-id alacritty -e xkill
 
 # start a program launcher
 # mnemonic: Opening a program
@@ -202,7 +202,7 @@ bindsym $mod+Control+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen
-bindsym $mod+$alt+l exec $lock_screen
+bindsym $mod+$alt+l exec --no-startup-id $lock_screen
 
 # change keyboard layout
 
