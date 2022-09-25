@@ -108,3 +108,17 @@ source $ZSH/oh-my-zsh.sh
 
 # Load aliases
 source .zsh_aliases
+
+# Disable ugly highlight colors for `ls`
+# TODO: Solve this using ~/.dircolors instead
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
+# Set library path for linker
+export LD_LIBRARY_PATH=/usr/local/lib
+
+# Configure `less`
+# Leaves output on screen after quitting
+export LESS="-Xr"
+
+# Mount USB devices in shared folder (`/media`)
+export UDISKS_FILESYSTEM_SHARED=1

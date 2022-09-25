@@ -1,6 +1,9 @@
 # Set alias 'fuck' for package thefuck
 # eval "$(thefuck --alias)"
 
+alias ll='ls -alF'
+alias la='ls -A'
+
 # nvim
 alias vim="nvim"
 
@@ -47,3 +50,9 @@ alias set-brightness="xrandr --output HDMI-0 --brightness"
 alias usbmount="udisksctl mount -b"
 alias usbunmount="udisksctl unmount -b"
 
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
