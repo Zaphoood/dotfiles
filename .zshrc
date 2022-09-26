@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load aliases
-source .zsh_aliases
+source $HOME/.zsh_aliases
 
 # Disable ugly highlight colors for `ls`
 # TODO: Solve this using ~/.dircolors instead
