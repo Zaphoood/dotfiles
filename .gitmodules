@@ -1,6 +1,0 @@
-[submodule ".config/awesome/keyboard_layout"]
-	path = .config/awesome/keyboard_layout
-	url = https://github.com/echuraev/keyboard_layout
-[submodule ".config/i3/bumblebee-status"]
-	path = .config/i3/bumblebee-status
-	url = https://github.com/tobi-wan-kenobi/bumblebee-status.git
