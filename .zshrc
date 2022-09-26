@@ -122,3 +122,8 @@ export LESS="-Xr"
 
 # Mount USB devices in shared folder (`/media`)
 export UDISKS_FILESYSTEM_SHARED=1
+
+# Sometimes, pip installs to this directory, so it needs to be in PATH
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$PATH:/home/mathis/.local/bin"
+fi
