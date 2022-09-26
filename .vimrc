@@ -255,9 +255,6 @@ endif
 
 set termguicolors
 
-" Set colorscheme
-colorscheme catppuccin
-
 " CoC colors
 highlight! CocErrorSign guifg=tomato
 
