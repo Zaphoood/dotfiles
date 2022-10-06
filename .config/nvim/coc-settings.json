@@ -1,4 +1,8 @@
 {
   "clangd.semanticHighlighting": true,
-  "coc.preferences.semanticTokensHighlights": false
+  "coc.preferences.semanticTokensHighlights": false,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.1/clangd_15.0.1/bin/clangd",
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "rust-analyzer.inlayHints.enable": false
 }
