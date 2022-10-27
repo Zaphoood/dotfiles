@@ -148,3 +148,4 @@ export LD_LIBRARY_PATH=/usr/local/lib
 # Disable ugly highlight colors for `ls`
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
+. "$HOME/.cargo/env"
