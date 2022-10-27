@@ -56,3 +56,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
 fi
+
+# Move to trash
+#which trash-put &> /dev/null 
+#if [ $? -eq 0]; then
+#    alias trash=trash-put
+#fi
