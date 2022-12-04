@@ -12,14 +12,20 @@ Plug 'catppuccin/nvim', {'name': 'catppuccin'}
 Plug 'roxma/vim-tmux-clipboard'
 " fugitive (for git)
 Plug 'tpope/vim-fugitive'
+" VimTeX for editing LaTeX files
+Plug 'lervag/vimtex'
 
 call plug#end()
+
+" Leader
+let g:mapleader = ","
+let maplocalleader = ","
 
 " Neoformat configuration
 autocmd BufWritePre,TextChanged,InsertLeave *.py Neoformat
 
-" Leader
-let g:mapleader = ","
+" VimTeX
+let g:vimtex_view_method = 'zathura'
 
 " === CoC ===
 " Some servers have issues with backup files, see #649.
@@ -151,8 +157,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
@@ -193,7 +197,6 @@ autocmd FileType python set makeprg=mypy
 autocmd FileType python noremap <F9> :make%<CR>:cw<CR><CR>
 
 " Navigate panes easier
-" TODO: This doesn't work inside tmux right now
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -205,17 +208,27 @@ autocmd Filetype python set foldmethod=indent
 autocmd Filetype c,cpp set foldmethod=syntax
 set foldlevel=99
 
-
 " Tabs as spaces
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set tabstop=4
 
-autocmd Filetype c,cpp set shiftwidth=2
+autocmd Filetype c,cpp,html,css set shiftwidth=2
 
 " Use tabs for editing Makefiles
 autocmd BufRead Makefile setlocal noexpandtab
+
+" Some Emacs-like navigation in insert mode
+inoremap <C-A> <Home>
+inoremap <C-E> <End>
+
+" LaTeX Bindings
+" Create new `align*` block
+autocmd Filetype tex nnoremap <leader>bl o\begin{align*}<BS>\end{align*}kA	
+" Create new `proof*` block
+autocmd Filetype tex nnoremap <leader>bp o\begin{proof*}<BS>\end{proof*}kA
+autocmd Filetype tex imap <C-]> \{  \}hhi
 
 " === Aesthetics ===
 set number relativenumber
