@@ -57,8 +57,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-# Move to trash
-#which trash-put &> /dev/null 
-#if [ $? -eq 0]; then
-#    alias trash=trash-put
-#fi
+# Open PDFs from terminal
+function pdf() {
+    if [ $# -eq 0 ]; then
+        echo 'Usage: pdf <filename>'
+        return
+    fi
+    zathura "$1" &>/dev/null &
+}
