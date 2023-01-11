@@ -35,6 +35,7 @@ colors:
   indexed_colors:
     - { index: 16, color: '0xF8BD96' } # Peach
     - { index: 17, color: '0xF5E0DC' } # Rosewater
+    - { index: 33, color: '0x1E1D2F' } # Background
 
 window:
   startup_mode: Maximized
