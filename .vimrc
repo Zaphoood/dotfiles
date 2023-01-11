@@ -225,6 +225,8 @@ inoremap <C-E> <End>
 " LaTeX Bindings
 " Create new `align*` block
 autocmd Filetype tex nnoremap <leader>bl o\begin{align*}<BS>\end{align*}kA	
+" Create new `enumerate` block
+autocmd Filetype tex nnoremap <leader>be o\begin{enumerate}<BS>\end{enumerate}kA
 " Create new `proof` block
 autocmd Filetype tex nnoremap <leader>bp o\begin{proof}<BS>\end{proof}kA
 autocmd Filetype tex imap <C-]> \{  \}hhi
