@@ -211,7 +211,9 @@ set shiftwidth=4
 set expandtab
 set tabstop=4
 
+autocmd Filetype c,cpp,html,css set softtabstop=2
 autocmd Filetype c,cpp,html,css set shiftwidth=2
+autocmd Filetype c,cpp,html,css set tabstop=2
 
 " Use tabs for editing Makefiles
 autocmd BufRead Makefile setlocal noexpandtab
