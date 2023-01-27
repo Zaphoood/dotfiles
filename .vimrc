@@ -185,8 +185,11 @@ noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
 
-" F8: autopep8 (when editing a python file)
+" F8: Format
+" autopep8 for python
 autocmd FileType python noremap <buffer> <F8> :Neoformat<CR>
+" gofmt for go
+autocmd FileType go noremap <buffer> <F8> :w<CR>:!gofmt -w %<CR><CR>
 
 " F9: Run mypy on the current program, open quickfick window
 " and jump to first error (that's what that last <CR> does)
@@ -215,7 +218,8 @@ autocmd Filetype c,cpp,html,css set softtabstop=2
 autocmd Filetype c,cpp,html,css set shiftwidth=2
 autocmd Filetype c,cpp,html,css set tabstop=2
 
-" Use tabs for editing Makefiles
+" Use tabs for Go and Makefiles
+autocmd Filetype go setlocal noexpandtab
 autocmd BufRead Makefile setlocal noexpandtab
 
 " Some Emacs-like navigation in insert mode
