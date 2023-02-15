@@ -190,6 +190,8 @@ cnoremap <F5> <C-c>:set list!<CR>
 autocmd FileType python noremap <buffer> <F8> :Neoformat<CR>
 " gofmt for go
 autocmd FileType go noremap <buffer> <F8> :w<CR>:!gofmt -w %<CR><CR>
+" prettier for JavaScript and TypeScript
+autocmd FileType javascript,typescript noremap <buffer> <F8> :w<CR>:!prettier --write %<CR><CR>
 
 " F9: Run mypy on the current program, open quickfick window
 " and jump to first error (that's what that last <CR> does)
@@ -214,9 +216,9 @@ set shiftwidth=4
 set expandtab
 set tabstop=4
 
-autocmd Filetype c,cpp,html,css set softtabstop=2
-autocmd Filetype c,cpp,html,css set shiftwidth=2
-autocmd Filetype c,cpp,html,css set tabstop=2
+autocmd Filetype c,cpp,html,css,javascript,typescript,markdown set softtabstop=2
+autocmd Filetype c,cpp,html,css,javascript,typescript,markdown set shiftwidth=2
+autocmd Filetype c,cpp,html,css,javascript,typescript,markdown set tabstop=2
 
 " Use tabs for Go and Makefiles
 autocmd Filetype go setlocal noexpandtab
