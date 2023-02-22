@@ -125,9 +125,23 @@ export UDISKS_FILESYSTEM_SHARED=1
 
 # Sometimes, pip installs to this directory, so it needs to be in PATH
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$PATH:/home/mathis/.local/bin"
+    PATH="$PATH:$HOME/.local/bin"
+fi
+
+# This is where Go executables are installed. Useful for development
+if [ -d "$HOME/go/bin" ] ; then
+    PATH="$PATH:$HOME/go/bin"
 fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The fuck
+eval $(thefuck --alias)
+
+
+# pnpm
+export PNPM_HOME="/home/mathis/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
