@@ -129,8 +129,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # This is where Go executables are installed. Useful for development
-if [ -d "$HOME/go/bin" ] ; then
-    PATH="$PATH:$HOME/go/bin"
+if command -v go &> /dev/null ; then
+    PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
 export NVM_DIR="$HOME/.nvm"
@@ -145,3 +145,6 @@ eval $(thefuck --alias)
 export PNPM_HOME="/home/mathis/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+#
+
+export PATH="/opt:$PATH"
