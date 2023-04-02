@@ -148,3 +148,11 @@ export PATH="$PNPM_HOME:$PATH"
 #
 
 export PATH="/opt:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+[ -f "/home/mathis/.ghcup/env" ] && source "/home/mathis/.ghcup/env" # ghcup-env
