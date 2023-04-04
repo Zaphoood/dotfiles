@@ -11,15 +11,14 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
+vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
+vim.keymap.set("n", "<leader>N", ":cprev<Enter>zz")
 
 vim.api.nvim_create_autocmd(
 {"Filetype"},
 {
     pattern = {"tex"},
     callback = function()
-        vim.keymap.set("n", "<leader>bl", "o\\begin{align*}\n\n\\end{align*}kA	")
-        vim.keymap.set("n", "<leader>be", "o\\begin{enumerate*}\n\n\\end{enumerate*}kA	")
-        vim.keymap.set("n", "<leader>bp", "o\\begin{proof}\n\n<BS>\\end{proof}kA")
         vim.keymap.set("i", "<C-]>", "\\{  \\}hhi")
     end
 })
