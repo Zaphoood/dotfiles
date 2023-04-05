@@ -156,3 +156,6 @@ eval "$(pyenv virtualenv-init -)"
 
 
 [ -f "/home/mathis/.ghcup/env" ] && source "/home/mathis/.ghcup/env" # ghcup-env
+
+# Manually add ~/.ghcup/bin since this env script doesn't seem to work
+[ -d "$HOME/.ghcup/bin" ] && export PATH="$HOME/.ghcup/bin:$PATH"
