@@ -1,7 +1,18 @@
 local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(_, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+lsp.on_attach(function(client, bufnr)
+    local formatFn
+    if client.supports_method("textDocument/formatting") then
+        formatFn = function() vim.lsp.buf.format() end
+    else
+        formatFn = function() vim.cmd("Neoformat") end
+    end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = formatFn
+    })
+
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
@@ -13,13 +24,13 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 require('lspconfig').lua_ls.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = {'vim'},
-      },
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
     },
-  },
 }
 
 lsp.setup()
