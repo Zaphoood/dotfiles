@@ -1,3 +1,3 @@
 require("plugins")
-require("packer")
+require("remap")
 require("set")
