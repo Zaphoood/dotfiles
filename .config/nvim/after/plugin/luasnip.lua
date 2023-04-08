@@ -37,15 +37,13 @@ local function loadTemplate(filename)
 
     while true do
         line = file:read()
-        if line == nil then return template end
+        if line == nil then break end
         table.insert(template, text({ "", line }))
     end
+    return template
 end
 
-local latexTemplate = loadTemplate(
-    vim.api.nvim_call_function('stdpath', { 'config' }) .. "/after/plugin/snippets/template.tex"
-)
-
+local latexTemplatePath = vim.api.nvim_call_function('stdpath', { 'config' }) .. "/after/plugin/snippets/template.tex"
 
 
 vim.api.nvim_create_autocmd(
@@ -105,7 +103,7 @@ vim.api.nvim_create_autocmd(
                             trig = "template",
                             dscr = "Insert LaTeX template",
                         },
-                        latexTemplate
+                        loadTemplate(latexTemplatePath)
                     )
                 },
             })
