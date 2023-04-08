@@ -19,6 +19,13 @@ cmp.setup({
                 fallback()
             end
         end, { "i" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if ls.jumpable(-1) then
+                ls.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i" }),
     }
 })
 
