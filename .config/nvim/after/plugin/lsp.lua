@@ -1,5 +1,24 @@
 local lsp = require('lsp-zero').preset({})
 
+-- Table {bufnr: int, showDiagnostics: bool}
+ShowDiagnostics = {}
+
+local function toggleDiagnostics(bufnr)
+    if ShowDiagnostics[bufnr] == nil then
+        ShowDiagnostics[bufnr] = true
+    end
+
+    if ShowDiagnostics[bufnr] then
+        ShowDiagnostics[bufnr] = false
+        vim.diagnostic.disable(bufnr)
+        print("Diagnostics disabled")
+    else
+        ShowDiagnostics[bufnr] = true
+        vim.diagnostic.enable(bufnr)
+        print("Diagnostics enabled")
+    end
+end
+
 lsp.on_attach(function(client, bufnr)
     local formatFn
     if client.supports_method("textDocument/formatting") then
@@ -21,6 +40,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("n", "]g", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "[g", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "<leader>td", function() toggleDiagnostics(bufnr) end, opts)
 end)
 
 require('lspconfig').lua_ls.setup {
