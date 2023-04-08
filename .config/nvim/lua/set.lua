@@ -17,12 +17,6 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
-require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    transparent_background = true,
-})
-vim.cmd.colorscheme("catppuccin")
-
 vim.api.nvim_create_autocmd(
     { "Filetype" },
     {
