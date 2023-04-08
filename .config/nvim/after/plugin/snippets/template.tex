@@ -1,0 +1,75 @@
+\documentclass[12pt, fleqn]{article}
+\usepackage[a4paper, margin=2.25cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[german]{babel}
+\setlength{\parindent}{0pt}
+\linespread{1.25}
+
+% Custom commands
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\M}{\mathfrak{M}}
+
+\newcommand{\im}{\text{Im}}
+\newcommand{\re}{\text{Re}}
+
+\newcommand{\aufgabe}{\item[\textbf{Aufgabe \arabic{aufgabe}}]\stepcounter{aufgabe}}
+\renewcommand{\labelenumiii}{\roman{enumiii})}
+
+% Force carriage return
+\newcommand{\fcr}{\ \\}
+
+% For all
+\newcommand{\fa}[1]{\underset{#1}\forall}
+% Exists
+\newcommand{\ex}[1]{\underset{#1}\exists}
+% Limit as <#1> approaches infinity
+\newcommand{\linf}[1]{\lim_{#1\rightarrow\infty}}
+% Sequence
+\newcommand{\seq}[1]{(#1_n)_{n\in\N}}
+% Arrows
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\LRa}{\Leftrightarrow}
+
+\begin{document}
+
+\small{
+Mathis Weber
+\hfill
+\today
+}
+
+\begin{center}
+    \Large{Titel} \\
+    \large{Untertitel}
+\end{center}
+
+\vspace{0.5em}
+
+\newcounter{aufgabe}
+\setcounter{aufgabe}{1}
+
+\begin{enumerate}[wide, align=left]
+\aufgabe
+Lorem ipsum
+\begin{enumerate}
+    \item
+    Dolor sit amet
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
