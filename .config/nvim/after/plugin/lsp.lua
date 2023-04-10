@@ -19,12 +19,30 @@ local function toggleDiagnostics(bufnr)
     end
 end
 
+local function endswith(s, sub)
+    return s:sub(- #sub) == sub
+end
+
+local forceNeoformatFiletypes = {
+    ".tsx",
+    ".ts",
+}
+
 lsp.on_attach(function(client, bufnr)
     local formatFn
-    if client.supports_method("textDocument/formatting") then
+    local path = vim.api.nvim_buf_get_name(bufnr)
+    local forceNeoformat = false
+    for _, filetype in pairs(forceNeoformatFiletypes) do
+        if endswith(path, filetype) then
+            forceNeoformat = true
+            break
+        end
+    end
+
+    if not forceNeoformat and client.supports_method("textDocument/formatting") then
         formatFn = function() vim.lsp.buf.format() end
     else
-        formatFn = function() vim.cmd("Neoformat") end
+        formatFn = function() vim.cmd("silent Neoformat") end
     end
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
