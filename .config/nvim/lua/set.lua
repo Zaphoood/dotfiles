@@ -1,4 +1,5 @@
 vim.opt.nu = true
+vim.opt.rnu = true
 vim.opt.listchars = "eol:$,space:.,tab:>-"
 vim.opt.ruler = true
 vim.opt.scrolloff = 2
