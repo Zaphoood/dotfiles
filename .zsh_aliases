@@ -1,7 +1,4 @@
-# Set alias 'fuck' for package thefuck
-# eval "$(thefuck --alias)"
-
-alias ll='ls -alF'
+alias ll='ls -la'
 alias la='ls -A'
 
 # nvim
@@ -22,33 +19,26 @@ alias anime="ani-cli"
 alias g="git"
 alias glog="git log --graph --oneline --all"
 
-# Doxygen
-alias doxy="doxygen"
-
-# Pandoc for viewing Markdown files in terminal
+# `glow` for viewing Markdown files
 function md() {
     if [ $# -eq 0 ]; then
-        echo 'Usage: md <filename>'
-        return
+       local file="README.md" 
+    else
+        local file="$1"
     fi
-    glow -p "$1"
+    glow -p "$file"
 }
 
-# Viewing Markdown files as they will be renderer by github
-alias md-view="grip -b"
+# Viewing Markdown files as they will be rendered by github
+alias grip="grip -b"
 
 # Cool matrix effect
 alias matrix="cmatrix -s"
 
-# Alias for managing dotfiles in a git repository
-# that has its working tree set to $HOME
+# Alias for managing dotfiles in a git repository that has its working tree set to $HOME
 alias dot-cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
-alias set-brightness="xrandr --output HDMI-0 --brightness"
-
-# Mounting external drives such as USB sticks
-alias usbmount="udisksctl mount -b"
-alias usbunmount="udisksctl unmount -b"
+# alias set-brightness="xrandr --output HDMI-0 --brightness"
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -57,7 +47,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-# Open PDFs from terminal
+# Open PDFs with zathura
 function pdf() {
     if [ $# -eq 0 ]; then
         echo 'Usage: pdf <filename>'
