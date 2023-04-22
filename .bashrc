@@ -149,3 +149,38 @@ export LD_LIBRARY_PATH=/usr/local/lib
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
 . "$HOME/.cargo/env"
+
+# Sometimes, pip installs to this directory, so it needs to be in PATH
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
+
+# This is where Go executables are installed. Useful for development
+if command -v go &> /dev/null ; then
+    PATH="$PATH:$(go env GOPATH)/bin"
+fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/home/mathis/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+[ -f "/home/mathis/.ghcup/env" ] && source "/home/mathis/.ghcup/env" # ghcup-env
+
+# Manually add ~/.ghcup/bin since the above env script doesn't seem to work
+[ -d "$HOME/.ghcup/bin" ] && export PATH="$HOME/.ghcup/bin:$PATH"
+
+export PATH="/opt:$PATH"
+
+alias pdf=zathura

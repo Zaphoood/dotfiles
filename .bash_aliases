@@ -1,5 +1,5 @@
 # Set alias 'fuck' for package thefuck
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 
 # nvim
 alias vim="nvim"
