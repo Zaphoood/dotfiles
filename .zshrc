@@ -44,7 +44,9 @@ export EDITOR='vim'
 source $HOME/.zsh_aliases
 
 # Disable ugly highlight colors for `ls`
-export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}           х INT
+export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}           х INT
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Set library path for linker
 export LD_LIBRARY_PATH=/usr/local/lib
