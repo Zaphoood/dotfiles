@@ -37,3 +37,15 @@ vim.api.nvim_create_autocmd(
             vim.opt.expandtab = false
         end
     })
+
+vim.api.nvim_create_autocmd(
+    { "Filetype" },
+    {
+        pattern = { "asm" },
+        callback = function()
+            vim.opt.expandtab = false
+            vim.opt.softtabstop = 8
+            vim.opt.shiftwidth = 8
+            vim.opt.tabstop = 8
+        end
+    })
