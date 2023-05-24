@@ -1,7 +1,9 @@
 local lsp = require('lsp-zero').preset({})
 
--- Table {bufnr: int, showDiagnostics: bool}
+-- For each buffer, store wether to show diagnostics
 ShowDiagnostics = {}
+-- For each buffer, store wether to enable formatting
+EnableFormatting = {}
 
 local function toggleDiagnostics(bufnr)
     if ShowDiagnostics[bufnr] == nil then
@@ -19,19 +21,40 @@ local function toggleDiagnostics(bufnr)
     end
 end
 
+local function toggleFormatting(bufnr)
+    if EnableFormatting[bufnr] == nil or EnableFormatting[bufnr] then
+        EnableFormatting[bufnr] = false
+        print("Formatting disabled")
+    else
+        EnableFormatting[bufnr] = true
+        print("Formatting enabled")
+    end
+end
+
+
 local function endswith(s, sub)
     return s:sub(- #sub) == sub
 end
 
-local forceNeoformatFiletypes = {
+local disableFormatFiletypes = {
     ".tsx",
     ".ts",
+}
+local forceNeoformatFiletypes = {
 }
 
 lsp.on_attach(function(client, bufnr)
     local formatFn
     local path = vim.api.nvim_buf_get_name(bufnr)
     local forceNeoformat = false
+    local disableFormat = false
+
+    for _, filetype in pairs(disableFormatFiletypes) do
+        if endswith(path, filetype) then
+            disableFormat = true
+            break
+        end
+    end
     for _, filetype in pairs(forceNeoformatFiletypes) do
         if endswith(path, filetype) then
             forceNeoformat = true
@@ -39,11 +62,23 @@ lsp.on_attach(function(client, bufnr)
         end
     end
 
-    if not forceNeoformat and client.supports_method("textDocument/formatting") then
-        formatFn = function() vim.lsp.buf.format() end
+    if disableFormat then
+        formatFn = function()
+        end
+    elseif not forceNeoformat and client.supports_method("textDocument/formatting") then
+        formatFn = function(event)
+            if EnableFormatting[event.buf] == nil or EnableFormatting[event.buf] then
+                vim.lsp.buf.format()
+            end
+        end
     else
-        formatFn = function() vim.cmd("silent Neoformat") end
+        formatFn = function(event)
+            if EnableFormatting[event.buf] == nil or EnableFormatting[event.buf] then
+                vim.cmd("silent Neoformat")
+            end
+        end
     end
+
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         callback = formatFn
@@ -59,6 +94,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "]g", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "[g", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>td", function() toggleDiagnostics(bufnr) end, opts)
+    vim.keymap.set("n", "<leader>tf", function() toggleFormatting(bufnr) end, opts)
 end)
 
 require('lspconfig').lua_ls.setup {
