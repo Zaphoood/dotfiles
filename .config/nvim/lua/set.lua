@@ -3,6 +3,7 @@ vim.opt.rnu = true
 vim.opt.listchars = "eol:$,space:.,tab:>-"
 vim.opt.ruler = true
 vim.opt.scrolloff = 2
+vim.opt.mouse = ""
 
 vim.opt.smartindent = true
 vim.opt.hlsearch = false
