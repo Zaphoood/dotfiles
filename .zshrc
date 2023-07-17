@@ -91,3 +91,5 @@ eval "$(pyenv virtualenv-init -)"
 [ -d "$HOME/.ghcup/bin" ] && export PATH="$HOME/.ghcup/bin:$PATH"
 
 export PATH="/opt:$PATH"
+
+alias dc=sl

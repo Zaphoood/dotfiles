@@ -184,3 +184,5 @@ eval "$(pyenv virtualenv-init -)"
 export PATH="/opt:$PATH"
 
 alias pdf=zathura
+
+alias dc=sl
