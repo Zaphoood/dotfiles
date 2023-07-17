@@ -84,6 +84,17 @@ vim.api.nvim_create_autocmd(
                     ),
                     snip(
                         {
+                            trig = "itemize",
+                            dscr = "Insert an `itemize` block"
+                        },
+                        {
+                            text("\\begin{itemize}"),
+                            text({ "", "\t" }), insert(0),
+                            text({ "", "\\end{itemize}" }),
+                        }
+                    ),
+                    snip(
+                        {
                             trig = "proof",
                             dscr = "Insert a `proof` block"
                         },

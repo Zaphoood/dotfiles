@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>ws", function() vim.cmd("set list!") end)
 
 vim.keymap.set("i", "<C-A>", "<Home>", { noremap = true })
 vim.keymap.set("i", "<C-E>", "<End>", { noremap = true })
+
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
