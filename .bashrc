@@ -148,7 +148,9 @@ export LD_LIBRARY_PATH=/usr/local/lib
 # Disable ugly highlight colors for `ls`
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-. "$HOME/.cargo/env"
+if [ -d /path/to/directory ]; then
+    . "$HOME/.cargo/env"
+fi
 
 # Sometimes, pip installs to this directory, so it needs to be in PATH
 if [ -d "$HOME/.local/bin" ] ; then
