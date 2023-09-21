@@ -43,7 +43,7 @@ window:
   padding:
     x: 2
     y: 2
-  opacity: 0.95
+  opacity: 1.0
 
 font:
   normal:
