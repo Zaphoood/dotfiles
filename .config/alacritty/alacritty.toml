@@ -1,0 +1,76 @@
+[[colors.indexed_colors]]
+color = "0xF8BD96"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xF5E0DC"
+index = 17
+
+[[colors.indexed_colors]]
+color = "0x1E1D2F"
+index = 33
+
+[colors.bright]
+black = "0x988BA2"
+blue = "0x96CDFB"
+cyan = "0xB5E8E0"
+green = "0xABE9B3"
+magenta = "0xF2CDCD"
+red = "0xF28FAD"
+white = "0xD9E0EE"
+yellow = "0xFAE3B0"
+
+[colors.cursor]
+cursor = "0xF5E0DC"
+text = "0x1E1D2F"
+
+[colors.normal]
+black = "0x6E6C7E"
+blue = "0x96CDFB"
+cyan = "0x89DCEB"
+green = "0xABE9B3"
+magenta = "0xF5C2E7"
+red = "0xF28FAD"
+white = "0xD9E0EE"
+yellow = "0xFAE3B0"
+
+[colors.primary]
+background = "0x1E1D2F"
+foreground = "0xD9E0EE"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10
+
+[font.bold]
+family = "DejaVu Sans Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "DejaVu Sans Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "DejaVu Sans Mono"
+style = "Italic"
+
+[font.normal]
+family = "DejaVu Sans Mono"
+style = "regular"
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "none"
+opacity = 1.0
+startup_mode = "Maximized"
+
+[window.padding]
+x = 2
+y = 2
