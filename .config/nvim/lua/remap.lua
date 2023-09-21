@@ -12,8 +12,6 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
 vim.keymap.set("n", "<leader>N", ":cprev<Enter>zz")
-vim.keymap.set("n", "<Tab>", "gt")
-vim.keymap.set("n", "<S-Tab>", "gT")
 vim.keymap.set("n", "<leader><Tab>", ":tabnew<Enter>")
 
 vim.api.nvim_create_autocmd(
