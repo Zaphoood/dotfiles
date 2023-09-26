@@ -32,8 +32,8 @@ local function toggleFormatting(bufnr)
 end
 
 
-local function endswith(s, sub)
-    return s:sub(- #sub) == sub
+local function endswith(haystack, needle)
+    return haystack:sub(- #needle) == needle
 end
 
 local disableFormatFiletypes = {
