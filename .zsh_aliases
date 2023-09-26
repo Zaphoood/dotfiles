@@ -55,3 +55,5 @@ function pdf() {
     fi
     zathura "$1" &>/dev/null &
 }
+
+alias kee="tresor $HOME/datenbank.kdbx"
