@@ -47,20 +47,20 @@ window:
 
 font:
   normal:
-    family: DejaVu Sans Mono
+    family: More Perfect DOS VGA
     style: regular
 
   bold:
-    family: DejaVu Sans Mono
-    style: Bold
+    family: More Perfect DOS VGA
+    style: regular
 
   italic:
-    family: DejaVu Sans Mono
-    style: Italic
+    family: More Perfect DOS VGA
+    style: regular
 
   bold_italic:
-    family: DejaVu Sans Mono
-    style: Bold Italic
+    family: More Perfect DOS VGA
+    style: regular
 
   size: 10
 
