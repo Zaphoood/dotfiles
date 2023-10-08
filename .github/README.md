@@ -10,8 +10,8 @@ git clone https://github.com/Zaphoood/dotfiles $HOME/.dotfiles
 
 Create an alias for managing the repository
 ```
-alias dot-cfg='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-dot-cfg config --local status.showUntrackedFiles no
+alias dotcfg='git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+dotcfg config --local status.showUntrackedFiles no
 ```
 
 ## Programs I use
