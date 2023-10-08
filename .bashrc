@@ -191,3 +191,6 @@ export PATH="/opt:$PATH"
 alias pdf=zathura
 
 alias dc=sl
+
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
