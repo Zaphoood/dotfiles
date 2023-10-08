@@ -1,41 +1,31 @@
-# Catppuccin color scheme
+# Windows 95 color scheme
 colors:
   # Default colors
   primary:
-    background: '0x1E1D2F'
-    foreground: '0xD9E0EE'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1E1D2F'
-    cursor: '0xF5E0DC'
+    background: '0x000000'
+    foreground: '0xa8a8a8'
 
   # Normal colors
   normal:
-    black:   '0x6E6C7E' # Gray 0
-    red:     '0xF28FAD' # Red
-    green:   '0xABE9B3' # Green
-    yellow:  '0xFAE3B0' # Yellow
-    blue:    '0x96CDFB' # Blue
-    magenta: '0xF5C2E7' # Pink
-    cyan:    '0x89DCEB' # Sky
-    white:   '0xD9E0EE' # White
+    black:   '0x545454'
+    red:     '0xfc5454'
+    green:   '0x54fc54'
+    yellow:  '0xfcfc54'
+    blue:    '0x5454fc'
+    magenta: '0xfc54fc'
+    cyan:    '0x54fcfc'
+    white:   '0xa8a8a8'
 
   # Bright colors
   bright:
-    black:   '0x988BA2' # Gray 1
-    red:     '0xF28FAD' # Red
-    green:   '0xABE9B3' # Green
-    yellow:  '0xFAE3B0' # Yellow
-    blue:    '0x96CDFB' # Blue
-    magenta: '0xF2CDCD' # Flamingo
-    cyan:    '0xB5E8E0' # Teal
-    white:   '0xD9E0EE' # White
-
-  indexed_colors:
-    - { index: 16, color: '0xF8BD96' } # Peach
-    - { index: 17, color: '0xF5E0DC' } # Rosewater
-    - { index: 33, color: '0x1E1D2F' } # Background
+    black:   '0x545454'
+    red:     '0xfc5454'
+    green:   '0x54fc54'
+    yellow:  '0xfcfc54'
+    blue:    '0x5454fc'
+    magenta: '0xfc54fc'
+    cyan:    '0x54fcfc'
+    white:   '0xa8a8a8'
 
 window:
   startup_mode: Maximized
