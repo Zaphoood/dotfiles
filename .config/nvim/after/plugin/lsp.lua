@@ -37,10 +37,10 @@ local function endswith(haystack, needle)
 end
 
 local disableFormatFiletypes = {
-    ".tsx",
-    ".ts",
 }
 local forceNeoformatFiletypes = {
+    ".tsx",
+    ".ts",
 }
 
 lsp.on_attach(function(client, bufnr)
