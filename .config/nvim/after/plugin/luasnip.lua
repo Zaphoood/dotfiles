@@ -42,6 +42,7 @@ local function loadTemplate(filename)
     if line == nil then return errorMsg end
     table.insert(template, text(line))
 
+    -- Insert remaining lines while adding a newline each time (caused by the `{ "", line }` construct)
     while true do
         line = file:read()
         if line == nil then break end
@@ -78,7 +79,7 @@ vim.api.nvim_create_autocmd(
                         },
                         {
                             text("\\begin{enumerate}"),
-                            text({ "", "\t" }), insert(0),
+                            text({ "", "\t\\item " }), insert(0),
                             text({ "", "\\end{enumerate}" }),
                         }
                     ),
@@ -89,7 +90,7 @@ vim.api.nvim_create_autocmd(
                         },
                         {
                             text("\\begin{itemize}"),
-                            text({ "", "\t" }), insert(0),
+                            text({ "", "\t\\item " }), insert(0),
                             text({ "", "\\end{itemize}" }),
                         }
                     ),
