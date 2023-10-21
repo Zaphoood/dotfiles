@@ -99,3 +99,11 @@ alias dc=sl
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# pnpm
+export PNPM_HOME="/home/mathis/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
