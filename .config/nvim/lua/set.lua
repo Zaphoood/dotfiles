@@ -22,6 +22,9 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
+-- Used as condition for autocmd later
+local always_spellcheck_tex = false
+
 vim.api.nvim_create_autocmd(
     { "Filetype" },
     {
@@ -60,6 +63,10 @@ vim.api.nvim_create_autocmd(
     {
         pattern = { "tex" },
         callback = function()
+            if not always_spellcheck_tex then
+                return
+            end
+
             vim.opt_local.spell = true
             -- Assume German for .tex files
             vim.opt_local.spelllang = "de_de"
