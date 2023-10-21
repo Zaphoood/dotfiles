@@ -30,4 +30,6 @@ return {
     { "sbdchd/neoformat" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
+    { "m4xshen/autoclose.nvim" },
+    { "windwp/nvim-ts-autotag" },
 }
