@@ -5,6 +5,8 @@ local text = ls.text_node
 local insert = ls.insert_node
 local func = ls.function_node
 
+local snippetsDefined = false
+
 
 cmp.setup({
     sources = {
@@ -59,6 +61,12 @@ vim.api.nvim_create_autocmd(
     {
         pattern = { "tex" },
         callback = function()
+            -- There is a correct way to add these snippets without an autocmd and without using
+            -- this snippetsDefined flag, but I haven't figured it out
+
+            if snippetsDefined then return end
+            snippetsDefined = true
+
             ls.add_snippets(nil, {
                 all = {
                     snip(
