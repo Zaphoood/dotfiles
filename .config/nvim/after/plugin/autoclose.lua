@@ -8,6 +8,12 @@ require("autoclose").setup({
         },
         ["\""] = {
             disabled_filetypes = { "tex" }
-        }
+        },
+        ["'"] = {
+            disabled_filetypes = { "tex" }
+        },
+        ["`"] = {
+            disabled_filetypes = { "tex" }
+        },
     }
 })
