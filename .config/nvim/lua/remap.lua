@@ -14,11 +14,26 @@ vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
 vim.keymap.set("n", "<leader>N", ":cprev<Enter>zz")
 vim.keymap.set("n", "<leader><Tab>", ":tabnew<Enter>")
 
+
 vim.api.nvim_create_autocmd(
     { "Filetype" },
     {
         pattern = { "tex" },
         callback = function()
             vim.keymap.set("i", "<C-]>", "\\{  \\}hhi")
+        end
+    })
+
+vim.api.nvim_create_autocmd(
+    { "Filetype" },
+    {
+        pattern = { "markdown" },
+        callback = function()
+            vim.cmd("iab \"a ä")
+            vim.cmd("iab \"o ö")
+            vim.cmd("iab \"u ü")
+            vim.cmd("iab \"A Ä")
+            vim.cmd("iab \"O Ö")
+            vim.cmd("iab \"U Ü")
         end
     })
