@@ -4,6 +4,10 @@ bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Make Ctrl+S do nothing
+stty -ixon
+bindkey -r "^S"
+
 source $HOME/.zsh_aliases
 
 # Prompt
