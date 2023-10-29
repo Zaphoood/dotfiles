@@ -6,13 +6,27 @@ require("autoclose").setup({
             pair = "$$",
             enabled_filetypes = { "tex" },
         },
+        ["\\{"] = {
+            close = true,
+            pair = "\\{\\}",
+            enabled_filetypes = { "tex" },
+        },
         ["\""] = {
-            disabled_filetypes = { "tex" }
+            close = true,
+            escape = true,
+            pair = "\"\"",
+            disabled_filetypes = { "tex", "markdown" }
         },
         ["'"] = {
-            disabled_filetypes = { "tex" }
+            close = true,
+            escape = true,
+            pair = "''",
+            disabled_filetypes = { "tex", "markdown" }
         },
         ["`"] = {
+            close = true,
+            escape = true,
+            pair = "``",
             disabled_filetypes = { "tex" }
         },
     }
