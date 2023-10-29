@@ -19,6 +19,7 @@ _set_in_git_repo_hook() {
 
 typeset -a -g chpwd_functions
 chpwd_functions=(_set_in_git_repo_hook $chpwd_functions);
+export IN_GIT_REPO=
 
 function git_branch() {
     if [[ -z $IN_GIT_REPO ]]; then
