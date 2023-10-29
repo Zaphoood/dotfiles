@@ -28,7 +28,7 @@ local always_spellcheck_tex = false
 vim.api.nvim_create_autocmd(
     { "Filetype" },
     {
-        pattern = { "c,cpp,html,css,javascript,typescript,markdown" },
+        pattern = { "c,cpp,html,css,javascript,javascriptreact,typescript,typescriptreact,markdown" },
         callback = function()
             vim.opt.softtabstop = 2
             vim.opt.shiftwidth = 2
