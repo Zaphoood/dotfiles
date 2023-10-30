@@ -57,3 +57,4 @@ function pdf() {
 }
 
 alias kee="tresor $HOME/datenbank.kdbx"
+alias mux="tmux attach 2>/dev/null || [[ -z \"$TMUX\" ]] && tmux || echo You\'re already in tmux!"
