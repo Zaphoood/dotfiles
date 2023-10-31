@@ -80,3 +80,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# pfetch with kitties (https://github.com/andreasgrafen/pfetch-with-kitties)
+export PF_ASCII="Catppuccin"
+export PF_ALIGN="20"
