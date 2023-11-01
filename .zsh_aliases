@@ -12,9 +12,6 @@ alias v="xclip -r -selection clipboard -o"
 alias clock="tty-clock -sc -f \"%a, %d %b %Y %T %z\""
 alias clock-tiny="tty-clock -cD"
 
-# Anime client for watching animes from the terminal
-alias anime="ani-cli"
-
 # Git
 alias g="git"
 alias glog="git log --graph --oneline --all"
@@ -38,8 +35,6 @@ alias matrix="cmatrix -s"
 # Alias for managing dotfiles in a git repository with working tree set to $HOME
 alias dotcfg='git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
 
-# alias set-brightness="xrandr --output HDMI-0 --brightness"
-
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -47,13 +42,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-# Open PDFs with zathura
+# Alias for zathura
 function pdf() {
-    if [ $# -eq 0 ]; then
-        echo 'Usage: pdf <filename>'
-        return
-    fi
-    zathura "$1" &>/dev/null &
+    zathura "$@" &>/dev/null &
 }
 
 alias kee="tresor $HOME/datenbank.kdbx"
