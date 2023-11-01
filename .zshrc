@@ -70,7 +70,9 @@ function git_branch() {
     fi
 }
 setopt PROMPT_SUBST
-export PROMPT='%F{blue}%~%F%F{black}$(git_branch)$(git_status)%F{magenta} ❯%f '
+local _exit_code_status='%(?.%F{green}✔%f.%F{red}✘%f)'
+local _path_formatted='%F{blue}%B%~%b%f'
+export PROMPT='$_path_formatted%F{black}$(git_branch)$(git_status)%f $_exit_code_status %F{magenta}❯%f '
 
 # export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}
 # export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}
