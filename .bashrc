@@ -132,7 +132,7 @@ export LD_LIBRARY_PATH=/usr/local/lib
 # Disable ugly highlight colors for `ls`
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-if [ -d /path/to/directory ]; then
+if [ -f  "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 

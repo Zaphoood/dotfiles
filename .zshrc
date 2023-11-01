@@ -102,7 +102,7 @@ function _pyenv() {
 }
 alias pyenv="_pyenv"
 
-export PATH="/opt:$PATH"
+export PATH="$HOME/.cargo/bin:/opt:$PATH"
 
 alias dc=sl
 
