@@ -69,6 +69,9 @@ env:
 
 shell:
   program: /bin/zsh
+
 mouse:
   hide_when_typing: true
 
+key_bindings:
+  - { key: Back, mods: Control, chars: "\x17" }
