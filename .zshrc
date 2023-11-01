@@ -37,6 +37,11 @@ if [[ -d "$HOME/gitstatus" ]]; then
         local out=""
 
         if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+          if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+              out+=" %F{black}$VCS_STATUS_LOCAL_BRANCH%f"
+          else
+              out+=" %F{black}${VCS_STATUS_COMMIT:0:7}%f"
+          fi
           (( VCS_STATUS_COMMITS_BEHIND )) && out+=" %F{green}⇣${VCS_STATUS_COMMITS_BEHIND}%f"
           (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && out+=" "
           (( VCS_STATUS_COMMITS_AHEAD  )) && out+="%F{green}⇡${VCS_STATUS_COMMITS_AHEAD}%f"
@@ -47,32 +52,16 @@ if [[ -d "$HOME/gitstatus" ]]; then
           (( VCS_STATUS_NUM_CONFLICED )) && out+=" %F{red}!${VCS_STATUS_NUM_CONFLICED}%f"
         fi
 
-        echo $out
+        echo "$out"
     }
 else
     function git_status() {}
 fi
 
-function git_branch() {
-    if [[ -z $IN_GIT_REPO ]]; then
-        _set_in_git_repo_hook
-    fi
-
-    if [[ IN_GIT_REPO -ne 0 ]]; then
-        return
-    fi
-
-    branch=$(git symbolic-ref --short -q HEAD)
-    if [[ -n $branch ]]; then
-        echo " $branch"
-    else
-        echo " $(git rev-parse --short HEAD)"
-    fi
-}
 setopt PROMPT_SUBST
 local _exit_code_status='%(?.%F{green}✔%f.%F{red}✘%f)'
 local _path_formatted='%F{blue}%B%~%b%f'
-export PROMPT='$_path_formatted%F{black}$(git_branch)$(git_status)%f $_exit_code_status %F{magenta}❯%f '
+export PROMPT='$_path_formatted% $(git_status)%f $_exit_code_status %F{magenta}❯%f '
 
 # export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}
 # export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}
