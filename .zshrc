@@ -95,22 +95,6 @@ if command -v go &> /dev/null; then
     # PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-# Load nvm lazily
-local nvm_deps=(nvm corepack npm pm2 prettier)
-function _init_nvm() {
-    for dep in $nvm_deps; do
-        unalias $dep
-    done
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-}
-
-for dep in $nvm_deps; do
-    alias $dep="_init_nvm; $dep"
-done
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
