@@ -13,14 +13,44 @@ source $HOME/.zsh_aliases
 
 # Prompt
 alias _check_git_repo="git rev-parse --git-dir > /dev/null 2>&1"
+export IN_GIT_REPO=
 _set_in_git_repo_hook() {
     _check_git_repo
     export IN_GIT_REPO=$?
 };
-
 typeset -a -g chpwd_functions
 chpwd_functions=(_set_in_git_repo_hook $chpwd_functions);
-export IN_GIT_REPO=
+
+if [[ -d "$HOME/gitstatus" ]]; then
+    source ~/gitstatus/gitstatus.plugin.zsh
+    gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
+
+    function git_status() {
+        if [[ -z $IN_GIT_REPO ]]; then
+            _set_in_git_repo_hook
+        fi
+
+        if [[ IN_GIT_REPO -ne 0 ]]; then
+            return
+        fi
+
+        local out=""
+
+        if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+          (( VCS_STATUS_COMMITS_BEHIND )) && out+=" %F{green}⇣${VCS_STATUS_COMMITS_BEHIND}%f"
+          (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && out+=" "
+          (( VCS_STATUS_COMMITS_AHEAD  )) && out+="%F{green}⇡${VCS_STATUS_COMMITS_AHEAD}%f"
+
+          (( VCS_STATUS_NUM_STAGED    )) && out+=" %F{green}+${VCS_STATUS_NUM_STAGED}%f"
+          (( VCS_STATUS_NUM_UNSTAGED  )) && out+=" %F{red}!${VCS_STATUS_NUM_UNSTAGED}%f"
+          (( VCS_STATUS_NUM_UNTRACKED )) && out+=" %F{blue}?${VCS_STATUS_NUM_UNTRACKED}%f"
+        fi
+
+        echo $out
+    }
+else
+    function git_status() { return }
+fi
 
 function git_branch() {
     if [[ -z $IN_GIT_REPO ]]; then
@@ -33,10 +63,10 @@ function git_branch() {
 
     branch=$(git symbolic-ref --short -q HEAD)
     commit_hash=$(git rev-parse --short HEAD)
-    echo "(${branch:-$commit_hash}) "
+    echo " (${branch:-$commit_hash})"
 }
 setopt PROMPT_SUBST
-export PROMPT='%F{blue}%~%F %F{magenta}$(git_branch)❯%f '
+export PROMPT='%F{blue}%~%F%F{magenta}$(git_branch)$(git_status)%F{magenta} ❯%f '
 
 # export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}
 # export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}
