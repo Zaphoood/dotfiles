@@ -42,14 +42,15 @@ if [[ -d "$HOME/gitstatus" ]]; then
           (( VCS_STATUS_COMMITS_AHEAD  )) && out+="%F{green}⇡${VCS_STATUS_COMMITS_AHEAD}%f"
 
           (( VCS_STATUS_NUM_STAGED    )) && out+=" %F{green}+${VCS_STATUS_NUM_STAGED}%f"
-          (( VCS_STATUS_NUM_UNSTAGED  )) && out+=" %F{red}!${VCS_STATUS_NUM_UNSTAGED}%f"
+          (( VCS_STATUS_NUM_UNSTAGED  )) && out+=" %F{yellow}!${VCS_STATUS_NUM_UNSTAGED}%f"
           (( VCS_STATUS_NUM_UNTRACKED )) && out+=" %F{blue}?${VCS_STATUS_NUM_UNTRACKED}%f"
+          (( VCS_STATUS_NUM_CONFLICED )) && out+=" %F{red}!${VCS_STATUS_NUM_CONFLICED}%f"
         fi
 
         echo $out
     }
 else
-    function git_status() { return }
+    function git_status() {}
 fi
 
 function git_branch() {
@@ -62,11 +63,14 @@ function git_branch() {
     fi
 
     branch=$(git symbolic-ref --short -q HEAD)
-    commit_hash=$(git rev-parse --short HEAD)
-    echo " (${branch:-$commit_hash})"
+    if [[ -n $branch ]]; then
+        echo " $branch"
+    else
+        echo " $(git rev-parse --short HEAD)"
+    fi
 }
 setopt PROMPT_SUBST
-export PROMPT='%F{blue}%~%F%F{magenta}$(git_branch)$(git_status)%F{magenta} ❯%f '
+export PROMPT='%F{blue}%~%F%F{black}$(git_branch)$(git_status)%F{magenta} ❯%f '
 
 # export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}
 # export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}
