@@ -34,23 +34,24 @@ if [[ -d "$HOME/gitstatus" ]]; then
             return
         fi
 
-        local out=""
-
-        if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
-          if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
-              out+=" %F{black}$VCS_STATUS_LOCAL_BRANCH%f"
-          else
-              out+=" %F{black}${VCS_STATUS_COMMIT:0:7}%f"
-          fi
-          (( VCS_STATUS_COMMITS_BEHIND )) && out+=" %F{green}⇣${VCS_STATUS_COMMITS_BEHIND}%f"
-          (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && out+=" "
-          (( VCS_STATUS_COMMITS_AHEAD  )) && out+="%F{green}⇡${VCS_STATUS_COMMITS_AHEAD}%f"
-
-          (( VCS_STATUS_NUM_STAGED    )) && out+=" %F{green}+${VCS_STATUS_NUM_STAGED}%f"
-          (( VCS_STATUS_NUM_UNSTAGED  )) && out+=" %F{yellow}!${VCS_STATUS_NUM_UNSTAGED}%f"
-          (( VCS_STATUS_NUM_UNTRACKED )) && out+=" %F{blue}?${VCS_STATUS_NUM_UNTRACKED}%f"
-          (( VCS_STATUS_NUM_CONFLICED )) && out+=" %F{red}!${VCS_STATUS_NUM_CONFLICED}%f"
+        if ! gitstatus_query MY || [[ $VCS_STATUS_RESULT != ok-sync ]]; then
+            return
         fi
+
+        local out=""
+        if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+            out+=" %F{black}$VCS_STATUS_LOCAL_BRANCH%f"
+        else
+            out+=" %F{black}${VCS_STATUS_COMMIT:0:7}%f"
+        fi
+        (( VCS_STATUS_COMMITS_BEHIND )) && out+=" %F{green}⇣${VCS_STATUS_COMMITS_BEHIND}%f"
+        (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && out+=" "
+        (( VCS_STATUS_COMMITS_AHEAD  )) && out+="%F{green}⇡${VCS_STATUS_COMMITS_AHEAD}%f"
+
+        (( VCS_STATUS_NUM_STAGED    )) && out+=" %F{green}+${VCS_STATUS_NUM_STAGED}%f"
+        (( VCS_STATUS_NUM_UNSTAGED  )) && out+=" %F{yellow}!${VCS_STATUS_NUM_UNSTAGED}%f"
+        (( VCS_STATUS_NUM_UNTRACKED )) && out+=" %F{blue}?${VCS_STATUS_NUM_UNTRACKED}%f"
+        (( VCS_STATUS_NUM_CONFLICED )) && out+=" %F{red}!${VCS_STATUS_NUM_CONFLICED}%f"
 
         echo "$out"
     }
