@@ -58,12 +58,13 @@ fi
 # nvm
 export NVM_DIR="$HOME/.nvm"
 # Load nvm lazily
-function nvm() {
-    # $NVM_DIR/nvm.sh will define an `nvm` function that overrides this function (which is what we want)
+function _nvm() {
+    unalias nvm
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     nvm "$@"
 }
+alias nvm="_nvm"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -71,16 +72,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_CMD_INIT=1
 
 function _pyenv() {
-    if [[ PYENV_CMD_INIT -ne 0 ]]; then
-        # Unset alias to this function in order to avoid infinite recursion
-        if command -v pyenv &>/dev/null; then
-            unalias pyenv
-            export PYENV_CMD_INIT=0
-            eval "$(pyenv init -)"
-            eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
-        else
-            echo "Pyenv is not installed"
-        fi
+    # Unset alias to this function in order to avoid infinite recursion
+    unalias pyenv
+    if command -v pyenv &>/dev/null; then
+        export PYENV_CMD_INIT=0
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+    else
+        echo "Pyenv is not installed"
     fi
     pyenv "$@"
 }
