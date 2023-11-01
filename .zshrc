@@ -1,8 +1,9 @@
 CASE_SENSITIVE="true"
-export EDITOR='vim'
 bindkey -e
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+export EDITOR='vim'
 
 # Make Ctrl+S do nothing
 stty -ixon
@@ -44,15 +45,18 @@ export PROMPT='%F{blue}%~%F %F{magenta}$(git_branch)❯%f '
 # Leaves output of `less` on screen after exiting
 export LESS="-Xr"
 
-
 # pip may install packages to this directory
 # if [ -d "$HOME/.local/bin" ] ; then
 #     PATH="$PATH:$HOME/.local/bin"
 # fi
 
-# `go install` puts binaries here
-if command -v go &> /dev/null ; then
-    PATH="$PATH:$(go env GOPATH)/bin"
+# Add go install path to $PATH
+if command -v go &> /dev/null; then
+    # Quick:
+    PATH="$PATH:$HOME/go/bin"
+    # Safe: (Use this running binaries installed via go doesn't work. In that
+    # case you might want to update the hard-coded value above)
+    # PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
 # nvm
