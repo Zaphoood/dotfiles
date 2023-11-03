@@ -13,24 +13,27 @@ source $HOME/.zsh_aliases
 
 # Prompt
 alias _check_git_repo="git rev-parse --git-dir > /dev/null 2>&1"
-export IN_GIT_REPO=
+export _IN_GIT_REPO=
 _set_in_git_repo_hook() {
     _check_git_repo
-    export IN_GIT_REPO=$?
+    export _IN_GIT_REPO=$?
 };
 typeset -a -g chpwd_functions
 chpwd_functions=(_set_in_git_repo_hook $chpwd_functions);
+
+export _GIT_STATUS=
 
 if [[ -d "$HOME/gitstatus" ]]; then
     source ~/gitstatus/gitstatus.plugin.zsh
     gitstatus_stop 'MY' && gitstatus_start -s -1 -u -1 -c -1 -d -1 'MY'
 
-    function git_status() {
-        if [[ -z $IN_GIT_REPO ]]; then
+    function _set_git_status_hook() {
+        if [[ -z "$_IN_GIT_REPO" ]]; then
             _set_in_git_repo_hook
         fi
 
-        if [[ IN_GIT_REPO -ne 0 ]]; then
+        if [[ _IN_GIT_REPO -ne 0 ]]; then
+            export _GIT_STATUS=
             return
         fi
 
@@ -53,16 +56,19 @@ if [[ -d "$HOME/gitstatus" ]]; then
         (( VCS_STATUS_NUM_UNTRACKED )) && out+=" %F{blue}?${VCS_STATUS_NUM_UNTRACKED}%f"
         (( VCS_STATUS_NUM_CONFLICED )) && out+=" %F{red}!${VCS_STATUS_NUM_CONFLICED}%f"
 
-        echo "$out"
+        export _GIT_STATUS="$out"
     }
 else
-    function git_status() {}
+    function _set_git_status_hook() {}
 fi
+
+typeset -a precmd_functions
+precmd_functions+=(_set_git_status_hook);
 
 setopt PROMPT_SUBST
 local _exit_code_status='%(?.%F{green}✔%f.%F{red}✘%f)'
 local _path_formatted='%F{blue}%B%~%b%f'
-export PROMPT='$_path_formatted% $(git_status)%f $_exit_code_status %F{magenta}❯%f '
+export PROMPT='$_path_formatted% $_GIT_STATUS%f $_exit_code_status %F{magenta}❯%f '
 
 # export LS_COLORS=${LS_COLORS/ow=34;42/ow=1;34}
 # export LS_COLORS=${LS_COLORS/tw=30;42/tw=1;34}
