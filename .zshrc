@@ -94,23 +94,10 @@ fi
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 
-function _pyenv() {
-    # Unset alias to this function in order to avoid infinite recursion
-    unalias pyenv
-    if command -v pyenv &>/dev/null; then
-        eval "$(pyenv init -)"
-        eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
-    else
-        echo "Pyenv is not installed"
-    fi
-    pyenv "$@"
-}
-alias pyenv="_pyenv"
-
-export PATH="$HOME/.cargo/bin:/opt:$PATH"
-
-alias dc=sl
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:/opt:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/mathis/.local/share/pnpm"
