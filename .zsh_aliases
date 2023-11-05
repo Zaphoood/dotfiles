@@ -65,3 +65,5 @@ function mux() {
         echo "You're already in tmux!"
     fi
 }
+
+alias dc=sl
