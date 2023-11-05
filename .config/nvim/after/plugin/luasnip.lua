@@ -136,3 +136,21 @@ vim.api.nvim_create_autocmd(
             })
         end
     })
+
+ls.add_snippets(nil, {
+    all = {
+        snip(
+            {
+                trig = "ifnm",
+                dscr = "Create the usual `if __name__ == \"__main__\": ...`"
+            },
+            {
+                text("def main():"),
+                text({ "", "    " }), insert(0),
+                text({ "", "" }),
+                text({ "", "if __name__ == \"__main__\":" }),
+                text({ "", "    main()" }),
+            }
+        ),
+    },
+})
