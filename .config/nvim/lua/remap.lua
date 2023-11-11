@@ -14,6 +14,10 @@ vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
 vim.keymap.set("n", "<leader>N", ":cprev<Enter>zz")
 vim.keymap.set("n", "<leader><Tab>", ":tabnew<Enter>")
 
+vim.keymap.set("n", "<leader>f", "za")
+
+vim.cmd("iab symporg symprog")
+vim.cmd("iab SymPorg SymProg")
 
 vim.api.nvim_create_autocmd(
     { "Filetype" },

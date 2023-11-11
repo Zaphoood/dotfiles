@@ -12,6 +12,11 @@ vim.opt.termguicolors = true
 vim.opt.mouse = ""
 vim.opt.updatetime = 50
 
+-- Fold using treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
+
 -- Split
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -70,5 +75,14 @@ vim.api.nvim_create_autocmd(
             vim.opt_local.spell = true
             -- Assume German for .tex files
             vim.opt_local.spelllang = "de_de"
+        end
+    })
+
+vim.api.nvim_create_autocmd(
+    { "Filetype" },
+    {
+        pattern = { "markdown" },
+        callback = function()
+            vim.cmd("set textwidth=120")
         end
     })
