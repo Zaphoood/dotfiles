@@ -5,6 +5,11 @@ bindkey "^[[1;5D" backward-word
 
 export EDITOR='vim'
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # Make Ctrl+S do nothing
 stty -ixon
 bindkey -r "^S"
