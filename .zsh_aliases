@@ -29,6 +29,9 @@ function md() {
 # Viewing Markdown files as they will be rendered by github
 alias grip="grip -b"
 
+# Count lines of code
+alias cloc="cloc --exclude-dir=.git,.mypy_cache"
+
 # Cool matrix effect
 alias matrix="cmatrix -s"
 
