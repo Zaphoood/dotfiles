@@ -3,19 +3,25 @@ vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set("n", "<leader>ws", function() vim.cmd("set list!") end)
+-- [t]oggle [w]hitespace
+vim.keymap.set("n", "<leader>tw", function() vim.cmd("set list!") end)
 
+-- Emacs-like shortcuts while in insert mode
 vim.keymap.set("i", "<C-A>", "<Home>", { noremap = true })
 vim.keymap.set("i", "<C-E>", "<End>", { noremap = true })
 
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
+
+-- [n]ext compilation error
 vim.keymap.set("n", "<leader>n", ":cnext<Enter>zz")
 vim.keymap.set("n", "<leader>N", ":cprev<Enter>zz")
 vim.keymap.set("n", "<leader><Tab>", ":tabnew<Enter>")
 
+-- [f]old
 vim.keymap.set("n", "<leader>f", "za")
 
+-- common typo
 vim.cmd("iab symporg symprog")
 vim.cmd("iab SymPorg SymProg")
 
