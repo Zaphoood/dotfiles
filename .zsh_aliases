@@ -15,6 +15,7 @@ alias clock-tiny="tty-clock -cD"
 # Git
 alias g="git"
 alias glog="git log --graph --oneline --all"
+alias gs="git status"
 
 # `glow` for viewing Markdown files
 function md() {
