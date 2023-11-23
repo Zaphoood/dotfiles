@@ -30,10 +30,5 @@ return {
     { "sbdchd/neoformat" },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        opts = {}
-    },
     { "windwp/nvim-ts-autotag" },
 }
