@@ -107,4 +107,17 @@ require('lspconfig').lua_ls.setup {
     },
 }
 
+lsp.on_attach(function()
+    local handle = io.popen("pyenv which python")
+    if not handle then return end
+
+    local output = handle:read("*a"):gsub("[\n\r]", "")
+    handle:close()
+
+    vim.defer_fn(function()
+        -- Command may not exists, therefore wrap in `pcall`
+        pcall(function() vim.cmd( "PyrightSetPythonPath" .. " " .. output) end)
+    end, 1)
+end)
+
 lsp.setup()
