@@ -68,13 +68,13 @@ vim.api.nvim_create_autocmd(
     {
         pattern = { "tex" },
         callback = function()
-            if not always_spellcheck_tex then
-                return
+            if always_spellcheck_tex then
+                vim.opt_local.spell = true
+                -- Assume German for .tex files
+                vim.opt_local.spelllang = "de_de"
             end
 
-            vim.opt_local.spell = true
-            -- Assume German for .tex files
-            vim.opt_local.spelllang = "de_de"
+            vim.cmd("set textwidth=100")
         end
     })
 
