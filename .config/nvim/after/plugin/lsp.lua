@@ -95,19 +95,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "[g", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>td", function() toggleDiagnostics(bufnr) end, opts)
     vim.keymap.set("n", "<leader>tf", function() toggleFormatting(bufnr) end, opts)
-end)
 
-require('lspconfig').lua_ls.setup {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' },
-            },
-        },
-    },
-}
-
-lsp.on_attach(function()
+    -- Workaround to point pyright to the correct python path
     local handle = io.popen("pyenv which python")
     if not handle then return end
 
@@ -119,5 +108,15 @@ lsp.on_attach(function()
         pcall(function() vim.cmd( "PyrightSetPythonPath" .. " " .. output) end)
     end, 1)
 end)
+
+require('lspconfig').lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
+    },
+}
 
 lsp.setup()
