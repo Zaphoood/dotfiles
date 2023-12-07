@@ -82,6 +82,7 @@ local wrappers = {
     { "_",  "_",  "_" },
     { "$",  "$",  "$" },
     { "*",  "**", "**" },
+    { "~",  "~~", "~~" },
 }
 
 for _, pair in pairs(wrappers) do
