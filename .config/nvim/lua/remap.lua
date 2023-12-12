@@ -108,12 +108,14 @@ vim.api.nvim_create_autocmd(
     {
         pattern = { "markdown" },
         callback = function()
-            vim.keymap.set("n", "<leader>ll", function ()
-              local path = vim.fn.expand("%:p")
-              vim.cmd("split")
-              vim.cmd("terminal")
-              vim.cmd("resize 2")
-              vim.api.nvim_input("igrip " .. path .. "<Enter>")
+            vim.keymap.set("n", "<leader>ll", function()
+                local path = vim.fn.expand("%:p")
+                vim.cmd("split")
+                vim.cmd("terminal")
+                vim.cmd("resize 2")
+                vim.api.nvim_input("igrip " .. path .. "<Enter>")
+                -- Leave terminal mode and go back to last window
+                vim.api.nvim_input("<C-\\><C-n><C-w><C-w>")
             end)
         end
     })
