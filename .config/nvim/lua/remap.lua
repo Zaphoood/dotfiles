@@ -102,3 +102,18 @@ vim.api.nvim_create_autocmd(
             vim.keymap.set("i", "<C-]>", "\\{  \\}hhi")
         end
     })
+
+vim.api.nvim_create_autocmd(
+    { "Filetype" },
+    {
+        pattern = { "markdown" },
+        callback = function()
+            vim.keymap.set("n", "<leader>ll", function ()
+              local path = vim.fn.expand("%:p")
+              vim.cmd("split")
+              vim.cmd("terminal")
+              vim.cmd("resize 2")
+              vim.api.nvim_input("igrip " .. path .. "<Enter>")
+            end)
+        end
+    })
