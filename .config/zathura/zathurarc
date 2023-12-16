@@ -1,4 +1,4 @@
 set selection-clipboard clipboard
 set default-bg "#e3e8e8"
-set statusbar-bg "#45475a"
-set statusbar-fg "#cdd6f4"
+set statusbar-bg "#1e1d2f"
+set statusbar-fg "#96cdfb"
