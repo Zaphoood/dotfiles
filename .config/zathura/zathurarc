@@ -1,4 +1,10 @@
 set selection-clipboard clipboard
+
 set default-bg "#e3e8e8"
 set statusbar-bg "#1e1d2f"
 set statusbar-fg "#96cdfb"
+
+map b toggle_statusbar
+
+# Hide status bar initially
+set guioptions none
