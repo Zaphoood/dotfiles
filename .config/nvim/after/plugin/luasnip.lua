@@ -31,30 +31,6 @@ cmp.setup({
     }
 })
 
-local function loadTemplate(filename)
-    -- Create `insert` at top of template, so that the cursor stays at the start
-    local template = { insert(0) }
-    local errorMsg = { text("Could not load template: '" .. filename .. "'") }
-
-    local file = io.open(filename, "r")
-    if file == nil then return errorMsg end
-
-    -- Insert first line without leading newline
-    local line = file:read()
-    if line == nil then return errorMsg end
-    table.insert(template, text(line))
-
-    -- Insert remaining lines while adding a newline each time (caused by the `{ "", line }` construct)
-    while true do
-        line = file:read()
-        if line == nil then break end
-        table.insert(template, text({ "", line }))
-    end
-    return template
-end
-
-local latexTemplatePath = vim.api.nvim_call_function('stdpath', { 'config' }) .. "/after/plugin/snippets/template.tex"
-
 local function valueOfNthInsert(n)
     return func(function(args) return args[1][1] end, { n })
 end
@@ -154,14 +130,6 @@ vim.api.nvim_create_autocmd(
                             insert(3),
                         }
                     ),
-                    -- TODO: Remove this, since I don't use it anymore
-                    snip(
-                        {
-                            trig = "template",
-                            dscr = "Insert LaTeX template",
-                        },
-                        loadTemplate(latexTemplatePath)
-                    )
                 },
             })
         end
