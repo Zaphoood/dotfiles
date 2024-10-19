@@ -178,3 +178,18 @@ alias dc=sl
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/mathis/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/mathis/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
