@@ -55,6 +55,9 @@ end
 
 local latexTemplatePath = vim.api.nvim_call_function('stdpath', { 'config' }) .. "/after/plugin/snippets/template.tex"
 
+local function valueOfNthInsert(n)
+    return func(function(args) return args[1][1] end, { n })
+end
 
 vim.api.nvim_create_autocmd(
     { "Filetype" },
@@ -115,16 +118,43 @@ vim.api.nvim_create_autocmd(
                     ),
                     snip(
                         {
-                            trig = "block",
+                            trig = "beg",
                             dscr = "Insert a `\\begin{...} \\end{...}` block"
                         },
                         {
                             text("\\begin{"), insert(1), text("}"),
                             text({ "", "\t" }), insert(2),
-                            text({ "", "\\end{" }), func(function(args) return args[1][1] end, { 1 }),
+                            text({ "", "\\end{" }), valueOfNthInsert(1),
                             text("}")
                         }
                     ),
+                    snip(
+                        {
+                            trig = "fr",
+                            dscr = "Fraction"
+                        },
+                        {
+                            text("\\frac{"),
+                            insert(1), text("}{"),
+                            insert(2), text("}"),
+                        }
+                    ),
+                    snip(
+                        {
+                            trig = "ys",
+                            dscr = "List of items with ellipsis in between"
+                        },
+                        {
+                            insert(1),
+                            text("_"),
+                            insert(2),
+                            text(", \\ldots, "),
+                            valueOfNthInsert(1),
+                            text("_"),
+                            insert(3),
+                        }
+                    ),
+                    -- TODO: Remove this, since I don't use it anymore
                     snip(
                         {
                             trig = "template",
