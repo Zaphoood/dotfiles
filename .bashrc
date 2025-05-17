@@ -156,13 +156,13 @@ export PNPM_HOME="/home/mathis/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # pyenv
-if command -v pyenv &>/dev/null
-then
-    export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init -)"
-	eval "$(pyenv virtualenv-init -)"
-fi
+# if command -v pyenv &>/dev/null
+# then
+#     export PYENV_ROOT="$HOME/.pyenv"
+# 	export PATH="$PYENV_ROOT/bin:$PATH"
+# 	eval "$(pyenv init -)"
+# 	eval "$(pyenv virtualenv-init -)"
+# fi
 
 
 [ -f "/home/mathis/.ghcup/env" ] && source "/home/mathis/.ghcup/env" # ghcup-env

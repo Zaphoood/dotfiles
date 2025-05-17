@@ -96,11 +96,11 @@ if command -v go &> /dev/null; then
     # PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+# pyenv -- disabled for now, using uv instead
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:/opt:$PATH"
 

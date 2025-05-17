@@ -97,15 +97,15 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>tf", function() toggleFormatting(bufnr) end, opts)
 
     -- Workaround to point pyright to the correct python path
-    local handle = io.popen("pyenv which python")
+    local handle = io.popen("uv run which python")
     if not handle then return end
 
     local output = handle:read("*a"):gsub("[\n\r]", "")
     handle:close()
 
     vim.defer_fn(function()
-        -- Command may not exists, therefore wrap in `pcall`
-        pcall(function() vim.cmd( "PyrightSetPythonPath" .. " " .. output) end)
+        -- Command may not exist, therefore wrap it in `pcall`
+        pcall(function() vim.cmd("PyrightSetPythonPath" .. " " .. output) end)
     end, 1)
 end)
 
