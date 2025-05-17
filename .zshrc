@@ -124,3 +124,9 @@ path=('/home/mathis/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+
+# Android tools
+  export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
+
+export LD_LIBRARY_PATH=/usr/local/lib
